@@ -1,0 +1,9 @@
+:host {
+	display: flex;
+	flex-direction: column;
+}
+
+:host > label {
+	color: #656256;
+	margin-bottom: 10px;
+}

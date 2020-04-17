@@ -1,0 +1,67 @@
+:host {
+	display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+	position: relative;
+	display: flex;
+  flex-direction: row;
+  justify-content: center;
+	align-items: center;
+	width: auto;
+  min-width: 30%;
+	margin: 0 8px 32px;
+	padding: 16px;
+  background-color: #1976d2;
+  color: white;
+  font-weight: 600;
+	border: none;
+	border-radius: 4px;
+}
+
+.title div {
+	position: absolute;
+	left: -10px;
+	background: #FF8811;
+	border-radius: 50%;
+	padding: 10px;
+	width: 80px;
+  height: 80px;
+}
+
+.title span {
+  margin-left: 80px;
+}
+
+.menu-container {
+	display: flex;
+	flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.menu-container .nav-btn {
+	cursor: pointer;
+	border: 1px solid #656256;
+}
+
+.menu-container .nav-btn:hover {
+  transform: translateY(-3px);
+ 	box-shadow: 0 3px 10px #656256;
+}
+
+.menu-container .nav-btn:hover .material-icons path {
+	fill: #656256;
+}
+
+.menu-container .nav-btn:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+svg#learn_title {
+	width: 80px;
+	fill: #ffffff;
+}

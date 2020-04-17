@@ -1,0 +1,133 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 8px 0;
+}
+
+p {
+  margin: 0;
+}
+
+.content {
+  margin: 80px auto;
+  padding: 0 16px;
+  max-width: 960px;
+}
+
+.direction-column {
+	flex-direction: column;
+}
+
+.space-between {
+	justify-content: space-between !important;
+}
+
+svg.material-icons {
+  height: 24px;
+  width: auto;
+}
+
+svg.material-icons:not(:last-child) {
+  margin-right: 8px;
+}
+
+.actions-header {
+	position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+	background: #1976d2;
+	color: #ffffff;
+	box-shadow: 0 3px 10px #656256;
+}
+
+.actions-header .nav-btn-xs {
+	cursor: pointer;
+	padding: 10px;
+	margin: 0 10px;
+}
+
+.actions-header h3 {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.nav-btn svg.material-icons path {
+  fill: #656256;
+}
+
+.nav-btn {
+  border-radius: 4px;
+  border: 1px solid #eee;
+  background-color: #fafafa;
+  height: 40px;
+  width: 200px;
+  margin: 0 8px 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  line-height: 24px;
+}
+
+.nav-btn.nav-btn-sm {
+  height: 16px;
+  width: 168px;
+}
+
+.nav-btn.nav-btn-xs {
+  height: 16px;
+  width: 100px;
+}
+
+a,
+a:visited,
+a:hover {
+  color: #1976d2;
+  text-decoration: none;
+}
+
+a:hover {
+	font-weight: 700;
+}
+
+.circle-link {
+  height: 40px;
+  width: 40px;
+  border-radius: 40px;
+  margin: 8px;
+  background-color: white;
+  border: 1px solid #eeeeee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: 0.2s ease-out;
+}
+
+.circle-link-sm {
+	height: 24px;
+  width: 24px;
+}
+
+.circle-link:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+}

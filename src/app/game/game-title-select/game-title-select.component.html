@@ -1,0 +1,7 @@
+<label>Моля, изберете настройка</label>
+<select [ngModel]="selectedTitle"
+				(ngModelChange)="titleSelected.emit($event)"
+				style="border-radius: 4px; height: 2.2em; width: 400px; outline: none; cursor: pointer;">
+	<option *ngFor="let title of titles"
+					[value]="title">{{ title }}</option>
+</select>

@@ -1,0 +1,22 @@
+<h2>Резултат</h2>
+<div class="answers-container">
+	<div>
+		<div class="answers-column right-answers">
+			Верни отговори
+		</div>
+		<div *ngFor="let right of answers.right"
+				 class="answers-row">
+			{{ right.front }} / {{ right.back }}
+		</div>
+	</div>
+	<div style="width: 3px; background: #FF8811;"></div>
+	<div>
+		<div class="answers-column wrong-answers">
+			Грешни отговори
+		</div>
+		<div *ngFor="let wrong of answers.wrong"
+				 class="answers-row">
+			{{ wrong.front }} / {{ wrong.back }}
+		</div>
+	</div>
+</div>
