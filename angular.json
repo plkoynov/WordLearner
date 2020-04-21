@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/WordHelper",
+            "outputPath": "dist/",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -40,6 +40,7 @@
               "outputHashing": "all",
               "sourceMap": false,
               "extractCss": true,
+							"baseHref": "/learner/",
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -117,8 +118,13 @@
               "devServerTarget": "WordHelper:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "WordHelper"
 }
