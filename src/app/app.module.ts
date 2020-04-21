@@ -10,6 +10,7 @@ import { MenuComponent } from './menu/menu.component';
 import { LocalStorageService } from './services/local-storage.service';
 import { SettingsComponent } from './settings/settings.component';
 import { GameTitleSelectComponent } from './game/game-title-select/game-title-select.component';
+import { SettingsEditComponent } from './settings/settings-edit/settings-edit.component';
 
 @NgModule({
 	declarations: [
@@ -19,7 +20,8 @@ import { GameTitleSelectComponent } from './game/game-title-select/game-title-se
 		MenuComponent,
 		GameCardComponent,
 		GameResultComponent,
-		GameTitleSelectComponent
+		GameTitleSelectComponent,
+		SettingsEditComponent
 	],
 	imports: [
 		BrowserModule,
