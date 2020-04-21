@@ -1,0 +1,93 @@
+:host {
+	display: flex;
+	flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-group > label,
+.input-group > input {
+	display: block;
+}
+
+.input-group > label {
+	color: #656256;
+  margin-bottom: 0.3em;
+}
+
+.input-group > input {
+  width: 100%;
+  border-radius: 2px;
+  border: 1px solid #000000;
+  padding: 5px;
+	font-size: 15px;
+	outline: none;
+}
+
+.edit-container {
+	display: flex;
+	margin-top: 1em;
+	height: 500px;
+}
+
+.new-item-btn {
+	padding: 5px;
+	text-align: center;
+	font-weight: 700;
+	font-size: 12px;
+	cursor: pointer;
+}
+
+.new-item-btn:hover {
+	color: #1976d2;
+	text-decoration: underline;
+}
+
+.item-container {
+  display: flex;
+  align-items: center;
+	justify-content: space-between;
+	padding: 5px;
+}
+
+.item-container:hover,
+.item-container.selected {
+	color: #1976d2;
+	background-color: #fafafa;
+	border: 1px solid #eee;
+	box-shadow: 0 5px 10px #656256;
+	cursor: pointer;
+}
+
+.item-container > div {
+	padding: 2px 0;
+	font-size: 15px;
+}
+
+.game-card {
+	width: 70%;
+  height: 250px;
+  margin: 0 auto 20px;
+}
+
+.game-card div {
+	display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  font-weight: bold;
+  color: #fff;
+  font-size: 36px;
+  outline: none;
+  border-radius: 4px;
+  box-shadow: 0 3px 10px #656256;
+}
+
+.game-card .front {
+	background: linear-gradient(#FF8811, #ffaf60);
+}
+
+.game-card .back {
+	background: linear-gradient(#1976d2, #5ca6ef);
+}
