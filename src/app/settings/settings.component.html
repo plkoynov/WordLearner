@@ -16,12 +16,37 @@
 	<h3>Настройки</h3>
 </div>
 
-<div style="width: 100%;">
-	<a class="nav-btn nav-btn-xs"
-		 style="cursor: pointer; padding: 10px; margin: 0 10px;"
-		 (click)="fileInput.click()">
-		Добави
+<div style="width: 100%; display: flex; justify-content: space-between;">
+	<a class="btn-link"
+		 [routerLink]="['edit']">
+		<svg class="material-icons"
+				 xmlns="http://www.w3.org/2000/svg"
+				 width="20"
+				 height="20"
+				 viewBox="0 0 512 512">
+			<path
+						d="m256 0c-141.164062 0-256 114.835938-256 256s114.835938 256 256 256 256-114.835938 256-256-114.835938-256-256-256zm112 277.332031h-90.667969v90.667969c0 11.777344-9.554687 21.332031-21.332031 21.332031s-21.332031-9.554687-21.332031-21.332031v-90.667969h-90.667969c-11.777344 0-21.332031-9.554687-21.332031-21.332031s9.554687-21.332031 21.332031-21.332031h90.667969v-90.667969c0-11.777344 9.554687-21.332031 21.332031-21.332031s21.332031 9.554687 21.332031 21.332031v90.667969h90.667969c11.777344 0 21.332031 9.554687 21.332031 21.332031s-9.554687 21.332031-21.332031 21.332031zm0 0" />
+		</svg>
+
+		Създай
 	</a>
+
+	<a class="btn-link"
+		 (click)="fileInput.click()">
+		<svg class="material-icons"
+				 xmlns="http://www.w3.org/2000/svg"
+				 width="24"
+				 height="24"
+				 viewBox="0 0 512 512">
+			<path
+						d="M412.907,214.08C398.4,140.693,333.653,85.333,256,85.333c-61.653,0-115.093,34.987-141.867,86.08
+								C50.027,178.347,0,232.64,0,298.667c0,70.72,57.28,128,128,128h277.333C464.213,426.667,512,378.88,512,320
+								C512,263.68,468.16,218.027,412.907,214.08z M298.667,277.333v85.333h-85.333v-85.333h-64L256,170.667l106.667,106.667H298.667z" />
+		</svg>
+
+		Импорт от файл
+	</a>
+
 	<input #fileInput
 				 type="file"
 				 style="display: none"
@@ -51,7 +76,8 @@
 
 		<a class="circle-link circle-link-sm"
 			 style="margin-left: 0;"
-			 (click)="preview(title)">
+			 [routerLink]="['edit']"
+			 [state]="{ title: title }">
 			<svg xmlns="http://www.w3.org/2000/svg"
 					 width="16"
 					 height="16"
