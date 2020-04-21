@@ -43,8 +43,11 @@ export class GameDto {
 	}
 
 	private setCurrentItem() {
-		const index = this.gameSettings.items.indexOf(this.currentItem);
-		this.gameSettings.items.splice(index, 1);
+		if (this.currentItem) {
+			const index = this.gameSettings.items.indexOf(this.currentItem);
+			this.gameSettings.items.splice(index, 1);
+		}
+
 		if (!this.gameSettings.items.length) {
 			this.end();
 			return;
