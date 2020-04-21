@@ -36,11 +36,8 @@ p {
 
 svg.material-icons {
   height: 24px;
-  width: auto;
-}
-
-svg.material-icons:not(:last-child) {
-  margin-right: 8px;
+	width: auto;
+	margin-right: 8px;
 }
 
 .actions-header {
@@ -55,6 +52,7 @@ svg.material-icons:not(:last-child) {
 	box-shadow: 0 3px 10px #656256;
 }
 
+.actions-header .nav-btn-sm,
 .actions-header .nav-btn-xs {
 	cursor: pointer;
 	padding: 10px;
@@ -96,6 +94,16 @@ svg.material-icons:not(:last-child) {
   width: 100px;
 }
 
+.btn-link {
+  display: flex;
+  align-items: center;
+	cursor: pointer;
+}
+
+a.btn-link:hover {
+	text-decoration: underline;
+}
+
 a,
 a:visited,
 a:hover {
@@ -103,7 +111,7 @@ a:hover {
   text-decoration: none;
 }
 
-a:hover {
+a:hover:not(.btn-link) {
 	font-weight: 700;
 }
 
