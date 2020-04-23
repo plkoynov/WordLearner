@@ -58,7 +58,9 @@
 <ng-container *ngIf="game.hasSelectedFile">
 	<app-game-card *ngIf="!game.isOver"
 								 [model]="game.currentItem"
-								 (answerSelected)="game.selectAnswer($event)"></app-game-card>
+								 [canBeSkipped]="game.canSkipItems"
+								 (answerSelected)="game.selectAnswer($event)"
+								 (skipped)="game.skipItem()"></app-game-card>
 
 	<app-game-result *ngIf="game.isOver"
 									 [answers]="game.answers"></app-game-result>

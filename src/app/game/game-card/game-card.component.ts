@@ -20,9 +20,9 @@ export class GameCardComponent {
 		this.isFlipped = false;
 	}
 
+	@Input() canBeSkipped = false;
+
 	@Output() answerSelected: EventEmitter<boolean> = new EventEmitter();
 
-	selectAnswer(isCorrect: boolean): void {
-		this.answerSelected.emit(isCorrect);
-	}
+	@Output() skipped: EventEmitter<void> = new EventEmitter();
 }
