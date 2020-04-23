@@ -37,9 +37,10 @@ export class SettingsEditComponent implements OnInit {
 			this.model.items = [];
 		}
 
-		const newItem = new SettingFileItem();
-		newItem.front = `Нов елемент ${this.newItemNumber}`;
-		newItem.back = `Нов елемент ${this.newItemNumber}`;
+		const newItem = new SettingFileItem(
+			`Нов елемент ${this.newItemNumber}`,
+			`Нов елемент ${this.newItemNumber}`
+		);
 		this.model.items.unshift(newItem);
 
 		this.newItemNumber++;
