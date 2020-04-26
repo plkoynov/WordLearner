@@ -22,6 +22,8 @@
 }
 
 .title div {
+	display: flex;
+	align-items: center;
 	position: absolute;
 	left: -10px;
 	background: #FF8811;
@@ -43,25 +45,12 @@
   margin-top: 16px;
 }
 
-.menu-container .nav-btn {
-	cursor: pointer;
-	border: 1px solid #656256;
-}
-
-.menu-container .nav-btn:hover {
-  transform: translateY(-3px);
- 	box-shadow: 0 3px 10px #656256;
-}
-
-.menu-container .nav-btn:hover .material-icons path {
-	fill: #656256;
-}
-
-.menu-container .nav-btn:not(:last-child) {
+.menu-container .flat-btn:not(:last-child) {
   margin-bottom: 20px;
 }
 
 svg#learn_title {
 	width: 80px;
+	height: 80px;
 	fill: #ffffff;
 }

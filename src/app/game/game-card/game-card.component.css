@@ -62,21 +62,3 @@
 	justify-content: center;
 	margin-top: 15px;
 }
-
-svg#right-answer {
-	width: 24px;
-	height:24px;
-	fill: #299e29;
-}
-
-svg#wrong-answer {
-	width: 20px;
-	height:20px;
-	fill: #ff0000;
-}
-
-svg#skip-answer {
-	width: 24px;
-	height:24px;
-	fill: #FF8811;
-}

@@ -6,4 +6,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 	styleUrls: ['./menu.component.css'],
 	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MenuComponent { }
+export class MenuComponent {
+	menuItems: { routerLink: string, icon: string, title: string }[] = [
+		{ routerLink: 'learn', icon: 'icon-education', title: 'Учете' },
+		{ routerLink: 'settings', icon: 'icon-cog', title: 'Настройки' }
+	];
+}

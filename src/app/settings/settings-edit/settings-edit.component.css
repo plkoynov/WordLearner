@@ -5,23 +5,29 @@
   justify-content: center;
 }
 
-.input-group > label,
-.input-group > input {
-	display: block;
+.input-group {
+	display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .input-group > label {
 	color: #656256;
-  margin-bottom: 0.3em;
+	margin-right: 1em;
 }
 
 .input-group > input {
-  width: 100%;
-  border-radius: 2px;
-  border: 1px solid #000000;
-  padding: 5px;
+  flex: 1;
+  padding: 5px 0;
 	font-size: 15px;
+	border: none;
+	border-bottom: 1px solid #cecece;
 	outline: none;
+}
+
+.input-group > input:focus {
+	transition : border 0.2s ease-in-out;
+	border-bottom-color: #1976d2;
 }
 
 .edit-container {
@@ -30,32 +36,19 @@
 	height: 500px;
 }
 
-.new-item-btn {
-	padding: 5px;
-	text-align: center;
-	font-weight: 700;
-	font-size: 12px;
-	cursor: pointer;
-}
-
-.new-item-btn:hover {
-	color: #1976d2;
-	text-decoration: underline;
-}
-
 .item-container {
   display: flex;
   align-items: center;
 	justify-content: space-between;
 	padding: 5px;
+	border: 1px solid transparent;
 }
 
 .item-container:hover,
 .item-container.selected {
 	color: #1976d2;
 	background-color: #fafafa;
-	border: 1px solid #eee;
-	box-shadow: 0 5px 10px #656256;
+	border-color: #eee;
 	cursor: pointer;
 }
 
@@ -85,7 +78,7 @@
 }
 
 .game-card .front {
-	background: linear-gradient(#FF8811, #ffaf60);
+	background: linear-gradient(#ff8811, #ffaf60);
 }
 
 .game-card .back {

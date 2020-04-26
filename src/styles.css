@@ -1,8 +1,19 @@
+html {
+	-webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+	-webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	font-size: 14px;
   color: #333;
-  box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -20,6 +31,13 @@ p {
   margin: 0;
 }
 
+a,
+a:visited,
+a:hover {
+  color: #1976d2;
+  text-decoration: none;
+}
+
 .content {
   margin: 80px auto;
   padding: 0 16px;
@@ -34,64 +52,58 @@ p {
 	justify-content: space-between !important;
 }
 
-svg.material-icons {
-  height: 24px;
-	width: auto;
-	margin-right: 8px;
-}
-
-.actions-header {
-	position: fixed;
-  top: 0;
-  width: 100%;
-  height: 50px;
-  display: flex;
-  align-items: center;
-	background: #1976d2;
-	color: #ffffff;
-	box-shadow: 0 3px 10px #656256;
-}
-
-.actions-header .nav-btn-sm,
-.actions-header .nav-btn-xs {
-	cursor: pointer;
-	padding: 10px;
-	margin: 0 10px;
-}
-
-.actions-header h3 {
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.nav-btn svg.material-icons path {
-  fill: #656256;
-}
-
-.nav-btn {
-  border-radius: 4px;
-  border: 1px solid #eee;
+/* Buttons */
+.flat-btn {
+	border-radius: 4px;
+  border: 1px solid #656256;
   background-color: #fafafa;
-  height: 40px;
-  width: 200px;
-  margin: 0 8px 16px;
+  height: 70px;
+  width: 240px;
+  margin: 5px 0;
   padding: 16px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  transition: all 0.2s ease-in-out;
-  line-height: 24px;
+	line-height: 24px;
 }
 
-.nav-btn.nav-btn-sm {
-  height: 16px;
-  width: 168px;
+.flat-btn.flat-btn-animated {
+	transition: all 0.2s ease-in-out;
 }
 
-.nav-btn.nav-btn-xs {
-  height: 16px;
-  width: 100px;
+.flat-btn:hover.flat-btn-animated > span {
+	font-weight: 700;
+}
+
+.flat-btn.flat-btn-animated:hover {
+	transform: translateY(-3px);
+ 	box-shadow: 0 3px 10px #656256;
+}
+
+.nav-btn {
+	display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 4px;
+  border: 1px solid #eeeeee;
+	background-color: #fafafa;
+	line-height: 16px;
+  padding: 7px 10px;
+	cursor: pointer;
+}
+
+.nav-btn > app-svg-icon {
+	margin-right: 8px;
+}
+
+.nav-btn > span {
+	font-weight: 500;
+}
+
+.nav-btn:hover {
+	background-color: #eeeeee;
 }
 
 .btn-link {
@@ -100,42 +112,99 @@ svg.material-icons {
 	cursor: pointer;
 }
 
+.btn-link > app-svg-icon {
+	margin-right: 8px;
+}
+
 a.btn-link:hover {
 	text-decoration: underline;
 }
 
-a,
-a:visited,
-a:hover {
-  color: #1976d2;
-  text-decoration: none;
-}
-
-a:hover:not(.btn-link) {
-	font-weight: 700;
-}
-
-.circle-link {
+.circle-btn {
+	display: flex;
+  justify-content: center;
+  align-items: center;
   height: 40px;
   width: 40px;
   border-radius: 40px;
   margin: 8px;
-  background-color: white;
+  background-color: #ffffff;
   border: 1px solid #eeeeee;
+	cursor: pointer;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.circle-btn.circle-btn-animated {
+	transition: 0.2s ease-out;
+}
+
+.circle-btn.circle-btn-animated:hover {
+	transform: translateY(-0.25rem);
+	box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+.circle-btn-sm {
+	height: 28px;
+  width: 28px;
+}
+
+/* Endo of Buttons */
+
+/* SVGs */
+.svg-icon {
+  height: 24px;
+	width: 24px;
+}
+
+.svg-icon.primary > svg {
+	fill: #ff8811;
+}
+
+.svg-icon.danger > svg {
+	fill: #ff0000;
+}
+
+.svg-icon.success > svg {
+	fill: #299e29;
+}
+
+.svg-icon.svg-icon-lg {
+	height: 28px;
+  width: 28px;
+}
+
+.svg-icon.svg-icon-sm {
+	height: 20px;
+	width: 20px;
+}
+
+.svg-icon.svg-icon-xs {
+	height: 16px;
+	width: 16px;
+}
+
+.flat-btn:hover .svg-icon.svg-icon-filled > svg {
+	fill: #656256;
+}
+
+/* End of SVGs */
+
+/* Headers */
+.actions-header {
+	position: fixed;
+  top: 0;
+  width: 100%;
+	height: 50px;
+	padding: 0 10px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  transition: 0.2s ease-out;
+	background: #1976d2;
+	color: #ffffff;
+	box-shadow: 0 3px 10px #656256;
 }
 
-.circle-link-sm {
-	height: 24px;
-  width: 24px;
+.actions-header h3 {
+	margin-left: auto;
+	margin-right: auto;
 }
-
-.circle-link:hover {
-  transform: translateY(-0.25rem);
-  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
-}
+/* End of Headers */

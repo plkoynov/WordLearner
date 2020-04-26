@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SvgIconComponent } from './common/components/svg-icon.component';
 import { GameCardComponent } from './game/game-card/game-card.component';
 import { GameResultComponent } from './game/game-result/game-result.component';
 import { GameTitleSelectComponent } from './game/game-title-select/game-title-select.component';
@@ -22,7 +23,8 @@ import { SettingsComponent } from './settings/settings.component';
 		GameCardComponent,
 		GameResultComponent,
 		GameTitleSelectComponent,
-		SettingsEditComponent
+		SettingsEditComponent,
+		SvgIconComponent
 	],
 	imports: [
 		BrowserModule,
