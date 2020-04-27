@@ -1,31 +1,10 @@
 <div class="game-card"
 		 [ngClass]="{'flipped': isFlipped }"
-		 (click)="isFlipped = !isFlipped">
+		 (click)="flip()">
 	<div class="front">
 		{{ model?.front }}
 	</div>
 	<div class="back">
 		{{ model?.back }}
 	</div>
-</div>
-
-<div class="game-card-actions">
-	<a class="circle-btn circle-btn-animated"
-		 (click)="answerSelected.emit(true)">
-		<app-svg-icon class="svg-icon success"
-									iconName="icon-checkmark"></app-svg-icon>
-	</a>
-
-	<a class="circle-btn circle-btn-animated"
-		 (click)="answerSelected.emit(false)">
-		<app-svg-icon class="svg-icon svg-icon-sm danger"
-									iconName="icon-cross"></app-svg-icon>
-	</a>
-
-	<a *ngIf="canBeSkipped"
-		 class="circle-btn circle-btn-animated"
-		 (click)="skipped.emit()">
-		<app-svg-icon class="svg-icon primary"
-									iconName="icon-redo2"></app-svg-icon>
-	</a>
 </div>

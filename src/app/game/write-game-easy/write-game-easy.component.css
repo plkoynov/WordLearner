@@ -1,0 +1,53 @@
+:host {
+	display: flex;
+	flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.letter-box-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-top: 1em;
+}
+
+.letter-box {
+	flex: 1;
+	margin: 10px;
+	padding: 20px;
+	border: 1px dotted #656256;
+	border-radius: 4px;
+	background: #ffaf60;
+	cursor: pointer;
+}
+
+.letter-box > input {
+	background: inherit;
+  border: none;
+  width: 0.8em;
+  outline: none;
+  color: #ffffff;
+	font-size: 24px;
+	text-align: center;
+}
+
+.card-game-actions {
+	display: flex;
+	justify-content: center;
+	margin-top: 15px;
+}
+
+.answer-message {
+	padding: 10px;
+	font-size: 16px;
+  font-weight: 500;
+}
+
+.answer-message.answer-message-correct {
+	color: #299e29;
+}
+
+.answer-message.answer-message-incorrect {
+	color: #ff0000;
+}

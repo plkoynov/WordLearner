@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GameComponent } from './game/game.component';
+import { CardGameComponent } from './game/card-game/card-game.component';
+import { WriteGameEasyComponent } from './game/write-game-easy/write-game-easy.component';
+import { WriteGameHardComponent } from './game/write-game-hard/write-game-hard.component';
+import { WriteGameComponent } from './game/write-game/write-game.component';
 import { MenuComponent } from './menu/menu.component';
 import { SettingsEditComponent } from './settings/settings-edit/settings-edit.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -13,7 +16,24 @@ const routes: Routes = [
 	},
 	{
 		path: 'learn',
-		component: GameComponent
+		component: CardGameComponent
+	},
+	{
+		path: 'write',
+		children: [
+			{
+				path: '',
+				component: WriteGameComponent
+			},
+			{
+				path: 'easy',
+				component: WriteGameEasyComponent
+			},
+			{
+				path: 'hard',
+				component: WriteGameHardComponent
+			}
+		]
 	},
 	{
 		path: 'settings',

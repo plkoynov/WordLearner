@@ -56,9 +56,3 @@
   -o-transform: rotateX( 180deg );
   transform: rotateX( 180deg );
 }
-
-.game-card-actions {
-	display: flex;
-	justify-content: center;
-	margin-top: 15px;
-}

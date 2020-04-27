@@ -1,0 +1,38 @@
+<div class="actions-header">
+	<a class="nav-btn"
+		 [routerLink]="['']">
+		<app-svg-icon class="svg-icon svg-icon-sm"
+									iconName="icon-undo2"></app-svg-icon>
+		<span>Начало</span>
+	</a>
+
+	<h3>Избор на настройки</h3>
+</div>
+
+<div>
+	<app-game-title-select (titleSelected)="title = $event"></app-game-title-select>
+
+	<div class="mode-selection">
+		<label>Моля, изберете трудност</label>
+		<div class="radio-group">
+			<input type="radio"
+						 id="easy"
+						 [(ngModel)]="mode"
+						 [value]="gameModes.easy">
+			<label for="easy">Лесно</label>
+		</div>
+
+		<div class="radio-group">
+			<input type="radio"
+						 id="hard"
+						 [(ngModel)]="mode"
+						 [value]="gameModes.hard">
+			<label for="hard">Трудно</label>
+		</div>
+	</div>
+
+	<a class="flat-btn flat-btn-animated"
+		 (click)="startGame()">
+		<span>Започни</span>
+	</a>
+</div>

@@ -3,7 +3,7 @@ import { SettingFile } from 'src/app/models/setting-file.model';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { RandomService } from 'src/app/services/random.service';
 
-export class GameDto {
+export abstract class GameDto {
 	isOver = false;
 	hasSelectedFile = false;
 
@@ -13,12 +13,12 @@ export class GameDto {
 	currentItem: SettingFileItem;
 	answers: { right: SettingFileItem[], wrong: SettingFileItem[] } = { right: [], wrong: [] };
 
-	private currentItemIndex = -1;
+	protected currentItemIndex = -1;
 
 	constructor(
-		private localStorageService: LocalStorageService,
-		private randomService: RandomService,
-		private settingFileTitle?: string
+		protected localStorageService: LocalStorageService,
+		protected randomService: RandomService,
+		protected settingFileTitle?: string
 	) {
 		if (settingFileTitle) {
 			this.init(this.settingFileTitle);
@@ -34,35 +34,11 @@ export class GameDto {
 		this.setCurrentItem();
 	}
 
-	selectAnswer(isCorrect: boolean): void {
-		if (isCorrect) {
-			this.answers.right.push(this.currentItem);
-		} else {
-			this.answers.wrong.push(this.currentItem);
-		}
-
-		this.setCurrentItem();
-	}
-
-	skipItem(): void {
-		let randomItemIndex: number;
-		do {
-			randomItemIndex = this.randomService.getRandomNumber(this.gameSettings.items.length);
-		} while (randomItemIndex === this.currentItemIndex);
-
-		this.currentItemIndex = randomItemIndex;
-		this.currentItem = new SettingFileItem(
-			this.gameSettings.items[this.currentItemIndex].front,
-			this.gameSettings.items[this.currentItemIndex].back
-		);
-		this.randomizeItem(this.currentItem);
-	}
-
 	end() {
 		this.isOver = true;
 	}
 
-	private setCurrentItem() {
+	protected setCurrentItem() {
 		if (this.currentItemIndex >= 0) {
 			this.gameSettings.items.splice(this.currentItemIndex, 1);
 		}
@@ -82,7 +58,21 @@ export class GameDto {
 		this.randomizeItem(this.currentItem);
 	}
 
-	private randomizeItem(item: SettingFileItem): void {
+	skipItem(): void {
+		let randomItemIndex: number;
+		do {
+			randomItemIndex = this.randomService.getRandomNumber(this.gameSettings.items.length);
+		} while (randomItemIndex === this.currentItemIndex);
+
+		this.currentItemIndex = randomItemIndex;
+		this.currentItem = new SettingFileItem(
+			this.gameSettings.items[this.currentItemIndex].front,
+			this.gameSettings.items[this.currentItemIndex].back
+		);
+		this.randomizeItem(this.currentItem);
+	}
+
+	protected randomizeItem(item: SettingFileItem): void {
 		if (this.randomService.getRandomNumber(10) % 2 === 0) {
 			item.swapSides();
 		}

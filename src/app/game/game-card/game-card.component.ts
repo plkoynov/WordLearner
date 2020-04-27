@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SettingFileItem } from 'src/app/models/setting-file-item.model';
 
 @Component({
@@ -20,9 +20,13 @@ export class GameCardComponent {
 		this.isFlipped = false;
 	}
 
-	@Input() canBeSkipped = false;
+	@Input() isFlipEnabled = true;
 
-	@Output() answerSelected: EventEmitter<boolean> = new EventEmitter();
+	flip() {
+		if (!this.isFlipEnabled) {
+			return;
+		}
 
-	@Output() skipped: EventEmitter<void> = new EventEmitter();
+		this.isFlipped = !this.isFlipped;
+	}
 }

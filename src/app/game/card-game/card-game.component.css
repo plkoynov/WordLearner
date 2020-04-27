@@ -4,3 +4,9 @@
   align-items: center;
   justify-content: center;
 }
+
+.card-game-actions {
+	display: flex;
+	justify-content: center;
+	margin-top: 15px;
+}

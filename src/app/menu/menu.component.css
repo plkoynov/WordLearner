@@ -39,14 +39,21 @@
 
 .menu-container {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   margin-top: 16px;
 }
 
-.menu-container .flat-btn:not(:last-child) {
-  margin-bottom: 20px;
+.menu-container .flat-btn {
+	flex: 0 1 calc(50% - 40px);
+  margin: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+	.menu-container .flat-btn {
+		flex-basis: 100%;
+	}
 }
 
 svg#learn_title {

@@ -31,6 +31,11 @@ p {
   margin: 0;
 }
 
+label {
+	color: #656256;
+	margin-bottom: 10px;
+}
+
 a,
 a:visited,
 a:hover {
@@ -57,23 +62,18 @@ a:hover {
 	border-radius: 4px;
   border: 1px solid #656256;
   background-color: #fafafa;
-  height: 70px;
-  width: 240px;
   margin: 5px 0;
-  padding: 16px;
+  padding: 20px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 	line-height: 24px;
+	cursor: pointer;
 }
 
 .flat-btn.flat-btn-animated {
 	transition: all 0.2s ease-in-out;
-}
-
-.flat-btn:hover.flat-btn-animated > span {
-	font-weight: 700;
 }
 
 .flat-btn.flat-btn-animated:hover {
@@ -148,7 +148,7 @@ a.btn-link:hover {
   width: 28px;
 }
 
-/* Endo of Buttons */
+/* End of Buttons */
 
 /* SVGs */
 .svg-icon {
@@ -208,3 +208,94 @@ a.btn-link:hover {
 	margin-right: auto;
 }
 /* End of Headers */
+
+/* Radio */
+.radio-group {
+	position: relative;
+	display: flex;
+	align-items: center;
+	margin: 10px 0;
+	margin-left: 2em;
+}
+
+.radio-group label {
+	cursor: pointer;
+	margin-bottom: 0;
+}
+
+.radio-group label:hover:before {
+	background: #eeeeee;
+}
+
+input[type="radio"] {
+	position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+input[type="radio"] + label:before {
+	content: '';
+  position: absolute;
+  left: -2em;
+  top: 0;
+  width: 1.4em;
+  height: 1.4em;
+  border: 1px solid #656256;
+  border-radius: 100%;
+  background: #fafafa;
+}
+
+input[type="radio"] + label:after {
+    content: '';
+    width: 1em;
+    height: 1em;
+		border: 1px solid #656256;
+		background-color: #1976d2;
+		position: absolute;
+		top: 0.2em;
+    left: -1.8em;
+    border-radius: 100%;
+    transition: all 0.2s ease;
+}
+
+input[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+input[type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+/* End of Radio */
+
+/* Input */
+.input-group {
+	display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input-group > label {
+	color: #656256;
+	margin-right: 1em;
+}
+
+.input-group > input {
+  flex: 1;
+  padding: 5px 0;
+	font-size: 15px;
+	border: none;
+	border-bottom: 1px solid #cecece;
+	outline: none;
+}
+
+.input-group > input:focus {
+	transition : border 0.2s ease-in-out;
+	border-bottom-color: #1976d2;
+}
+/* End of Input */
