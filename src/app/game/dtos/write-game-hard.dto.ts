@@ -8,7 +8,12 @@ export class WriteGameHardDto extends GameDto {
 
 	checkAnswer(): void {
 		this.hasResult = true;
-		this.isAnswerCorrect = this.answer === this.currentItem.back;
+		if (!this.answer || !this.answer.trim()) {
+			this.isAnswerCorrect = false;
+			return;
+		}
+
+		this.isAnswerCorrect = this.answer.toLowerCase() === this.currentItem.back.toLowerCase();
 
 		if (this.isAnswerCorrect) {
 			this.answers.right.push(this.currentItem);

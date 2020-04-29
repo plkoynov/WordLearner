@@ -7,9 +7,9 @@ export class WriteGameEasyDto extends GameDto {
 	letterBoxes: { index: number, value: string }[] = [];
 
 	checkAnswer(): void {
-		const answer = this.letterBoxes.map(e => e.value).join('');
+		const answer = this.letterBoxes.map(e => e.value.trim().toLowerCase()).join('');
 		this.hasResult = true;
-		this.isAnswerCorrect = answer === this.currentItem.back;
+		this.isAnswerCorrect = answer === this.currentItem.back.trim().toLowerCase();
 
 		if (this.isAnswerCorrect) {
 			this.answers.right.push(this.currentItem);
