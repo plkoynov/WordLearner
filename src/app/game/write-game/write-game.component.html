@@ -31,6 +31,16 @@
 		</div>
 	</div>
 
+	<div class="mode-selection">
+		<label>Допълнителни настройки</label>
+		<div class="checkbox-group">
+			<input type="checkbox"
+						 id="positionChange"
+						 [(ngModel)]="allowPositionChange">
+			<label for="positionChange">Разменяй предна и задна страна на случен принцип</label>
+		</div>
+	</div>
+
 	<a class="flat-btn flat-btn-animated"
 		 (click)="startGame()">
 		<span>Започни</span>

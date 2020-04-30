@@ -17,20 +17,14 @@ export abstract class GameDto {
 
 	constructor(
 		protected localStorageService: LocalStorageService,
-		protected randomService: RandomService,
-		protected settingFileTitle?: string
-	) {
-		if (settingFileTitle) {
-			this.init(this.settingFileTitle);
-		}
-	}
+		protected randomService: RandomService
+	) { }
 
-	init(title: string) {
+	init(title: string, allowPositionChange: boolean) {
 		this.hasSelectedFile = true;
 
-		this.settingFileTitle = title;
-
 		this.gameSettings = this.localStorageService.get(title);
+		this.gameSettings.allowPositionChange = allowPositionChange;
 		this.setCurrentItem();
 	}
 
@@ -55,7 +49,10 @@ export abstract class GameDto {
 			this.gameSettings.items[this.currentItemIndex].front,
 			this.gameSettings.items[this.currentItemIndex].back
 		);
-		this.randomizeItem(this.currentItem);
+
+		if (this.gameSettings.allowPositionChange) {
+			this.randomizeItem(this.currentItem);
+		}
 	}
 
 	skipItem(): void {
@@ -69,7 +66,10 @@ export abstract class GameDto {
 			this.gameSettings.items[this.currentItemIndex].front,
 			this.gameSettings.items[this.currentItemIndex].back
 		);
-		this.randomizeItem(this.currentItem);
+
+		if (this.gameSettings.allowPositionChange) {
+			this.randomizeItem(this.currentItem);
+		}
 	}
 
 	protected randomizeItem(item: SettingFileItem): void {

@@ -9,6 +9,7 @@ import { WriteGameMode } from '../enums/write-game-mode.enum';
 })
 export class WriteGameComponent {
 	title: string;
+	allowPositionChange = false;
 	mode = WriteGameMode.easy;
 
 	gameModes = WriteGameMode;
@@ -18,6 +19,12 @@ export class WriteGameComponent {
 	) { }
 
 	startGame() {
-		this.router.navigate(['write', `${WriteGameMode[this.mode]}`], { state: { title: this.title } });
+		this.router.navigate(['write', `${WriteGameMode[this.mode]}`],
+			{
+				state: {
+					title: this.title,
+					allowPositionChange: this.allowPositionChange
+				}
+			});
 	}
 }

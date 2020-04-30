@@ -210,7 +210,8 @@ a.btn-link:hover {
 /* End of Headers */
 
 /* Radio */
-.radio-group {
+.radio-group,
+.checkbox-group {
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -218,16 +219,19 @@ a.btn-link:hover {
 	margin-left: 2em;
 }
 
-.radio-group label {
+.radio-group label,
+.checkbox-group label {
 	cursor: pointer;
 	margin-bottom: 0;
 }
 
-.radio-group label:hover:before {
+.radio-group label:hover:before,
+.checkbox-group label:hover:before {
 	background: #eeeeee;
 }
 
-input[type="radio"] {
+input[type="radio"],
+input[type="checkbox"] {
 	position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -235,7 +239,8 @@ input[type="radio"] {
   width: 0;
 }
 
-input[type="radio"] + label:before {
+input[type="radio"] + label:before,
+input[type="checkbox"] + label:before {
 	content: '';
   position: absolute;
   left: -2em;
@@ -247,7 +252,12 @@ input[type="radio"] + label:before {
   background: #fafafa;
 }
 
-input[type="radio"] + label:after {
+input[type="checkbox"] + label:before {
+	border-radius: 0;
+}
+
+input[type="radio"] + label:after,
+input[type="checkbox"] + label:after {
     content: '';
     width: 1em;
     height: 1em;
@@ -260,13 +270,19 @@ input[type="radio"] + label:after {
     transition: all 0.2s ease;
 }
 
-input[type="radio"]:not(:checked) + label:after {
+input[type="checkbox"] + label:after  {
+	border-radius: 0;
+}
+
+input[type="radio"]:not(:checked) + label:after,
+input[type="checkbox"]:not(:checked) + label:after {
     opacity: 0;
     -webkit-transform: scale(0);
     transform: scale(0);
 }
 
-input[type="radio"]:checked + label:after {
+input[type="radio"]:checked + label:after,
+input[type="checkbox"]:checked + label:after {
     opacity: 1;
     -webkit-transform: scale(1);
     transform: scale(1);

@@ -21,7 +21,7 @@
 </div>
 
 <app-game-title-select *ngIf="!game.hasSelectedFile"
-											 (titleSelected)="game.init($event)"></app-game-title-select>
+											 (titleSelected)="game.init($event, true)"></app-game-title-select>
 
 <ng-container *ngIf="game.hasSelectedFile">
 	<div style="width: 100%;">
