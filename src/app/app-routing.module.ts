@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CardGameComponent } from './game/card-game/card-game.component';
+import { LearnGameSettingsComponent } from './game/learn-game-settings/learn-game-settings.component';
+import { LearnGameComponent } from './game/learn-game/learn-game.component';
 import { WriteGameEasyComponent } from './game/write-game-easy/write-game-easy.component';
 import { WriteGameHardComponent } from './game/write-game-hard/write-game-hard.component';
 import { WriteGameComponent } from './game/write-game/write-game.component';
@@ -16,7 +17,16 @@ const routes: Routes = [
 	},
 	{
 		path: 'learn',
-		component: CardGameComponent
+		children: [
+			{
+				path: '',
+				component: LearnGameSettingsComponent
+			},
+			{
+				path: 'game',
+				component: LearnGameComponent
+			}
+		]
 	},
 	{
 		path: 'write',

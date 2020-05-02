@@ -1,0 +1,30 @@
+<app-game-header [game]="game"></app-game-header>
+
+<div style="width: 100%;">
+	<app-game-card *ngIf="!game.isOver"
+								 [model]="game.currentItem"></app-game-card>
+
+	<div class="card-game-actions">
+		<a class="circle-btn circle-btn-animated"
+			 (click)="game.selectAnswer(true)">
+			<app-svg-icon class="svg-icon success"
+										iconName="icon-checkmark"></app-svg-icon>
+		</a>
+
+		<a class="circle-btn circle-btn-animated"
+			 (click)="game.selectAnswer(false)">
+			<app-svg-icon class="svg-icon svg-icon-sm danger"
+										iconName="icon-cross"></app-svg-icon>
+		</a>
+
+		<a *ngIf="game.settings?.canSkipItems"
+			 class="circle-btn circle-btn-animated"
+			 (click)="game.skipItem()">
+			<app-svg-icon class="svg-icon primary"
+										iconName="icon-redo2"></app-svg-icon>
+		</a>
+	</div>
+</div>
+
+<app-game-result *ngIf="game.isOver"
+								 [answers]="game.answers"></app-game-result>

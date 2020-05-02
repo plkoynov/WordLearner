@@ -1,0 +1,17 @@
+:host {
+	position: fixed;
+  top: 0;
+  width: 100%;
+	height: 50px;
+	padding: 0 10px;
+  display: flex;
+  align-items: center;
+	background: #1976d2;
+	color: #ffffff;
+	box-shadow: 0 3px 10px #656256;
+}
+
+:host h3 {
+	margin-left: auto;
+	margin-right: auto;
+}

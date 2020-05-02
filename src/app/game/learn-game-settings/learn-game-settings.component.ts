@@ -1,25 +1,21 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { GameSettingsDto } from '../dtos/game-settings.dto';
-import { WriteGameMode } from '../enums/write-game-mode.enum';
 
 @Component({
-	selector: 'app-write-game',
-	templateUrl: './write-game.component.html',
-	styleUrls: ['./write-game.component.css']
+	selector: 'app-learn-game-settings',
+	templateUrl: './learn-game-settings.component.html',
+	styleUrls: ['./learn-game-settings.component.css']
 })
-export class WriteGameComponent {
+export class LearnGameSettingsComponent {
 	settings: GameSettingsDto = new GameSettingsDto();
-	mode = WriteGameMode.easy;
-
-	gameModes = WriteGameMode;
 
 	constructor(
 		private router: Router
 	) { }
 
 	startGame() {
-		this.router.navigate(['write', `${WriteGameMode[this.mode]}`],
+		this.router.navigate(['learn/game'],
 			{
 				state: {
 					settings: this.settings

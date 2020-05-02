@@ -1,17 +1,19 @@
 import { SettingFileItem } from 'src/app/models/setting-file-item.model';
-import { SettingFile } from 'src/app/models/setting-file.model';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { RandomService } from 'src/app/services/random.service';
+import { GameSettingsDto } from './game-settings.dto';
 
 export abstract class GameDto {
+	title: string;
+	items: SettingFileItem[] = [];
+
 	isOver = false;
 	hasSelectedFile = false;
 
-	canSkipItems = false;
-
-	gameSettings: SettingFile;
 	currentItem: SettingFileItem;
 	answers: { right: SettingFileItem[], wrong: SettingFileItem[] } = { right: [], wrong: [] };
+
+	settings: GameSettingsDto;
 
 	protected currentItemIndex = -1;
 
@@ -20,11 +22,14 @@ export abstract class GameDto {
 		protected randomService: RandomService
 	) { }
 
-	init(title: string, allowPositionChange: boolean) {
+	init(settings: GameSettingsDto) {
+		const file = this.localStorageService.get(settings.gameTitle);
 		this.hasSelectedFile = true;
+		this.title = file.title;
+		this.items = file.items;
 
-		this.gameSettings = this.localStorageService.get(title);
-		this.gameSettings.allowPositionChange = allowPositionChange;
+		this.settings = settings;
+
 		this.setCurrentItem();
 	}
 
@@ -34,23 +39,21 @@ export abstract class GameDto {
 
 	protected setCurrentItem() {
 		if (this.currentItemIndex >= 0) {
-			this.gameSettings.items.splice(this.currentItemIndex, 1);
+			this.items.splice(this.currentItemIndex, 1);
 		}
 
-		if (!this.gameSettings.items.length) {
+		if (!this.items.length) {
 			this.end();
 			return;
 		}
 
-		this.canSkipItems = this.gameSettings.items.length > 1;
-
-		this.currentItemIndex = this.randomService.getRandomNumber(this.gameSettings.items.length);
+		this.currentItemIndex = this.randomService.getRandomNumber(this.items.length);
 		this.currentItem = new SettingFileItem(
-			this.gameSettings.items[this.currentItemIndex].front,
-			this.gameSettings.items[this.currentItemIndex].back
+			this.items[this.currentItemIndex].front,
+			this.items[this.currentItemIndex].back
 		);
 
-		if (this.gameSettings.allowPositionChange) {
+		if (this.settings.allowPositionChange) {
 			this.randomizeItem(this.currentItem);
 		}
 	}
@@ -58,16 +61,16 @@ export abstract class GameDto {
 	skipItem(): void {
 		let randomItemIndex: number;
 		do {
-			randomItemIndex = this.randomService.getRandomNumber(this.gameSettings.items.length);
+			randomItemIndex = this.randomService.getRandomNumber(this.items.length);
 		} while (randomItemIndex === this.currentItemIndex);
 
 		this.currentItemIndex = randomItemIndex;
 		this.currentItem = new SettingFileItem(
-			this.gameSettings.items[this.currentItemIndex].front,
-			this.gameSettings.items[this.currentItemIndex].back
+			this.items[this.currentItemIndex].front,
+			this.items[this.currentItemIndex].back
 		);
 
-		if (this.gameSettings.allowPositionChange) {
+		if (this.settings.allowPositionChange) {
 			this.randomizeItem(this.currentItem);
 		}
 	}

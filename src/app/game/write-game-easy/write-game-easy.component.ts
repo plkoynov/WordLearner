@@ -22,9 +22,9 @@ export class WriteGameEasyComponent implements OnInit {
 
 	ngOnInit() {
 		const state = this.location.getState() as any;
-		if (state && state.title) {
+		if (state && state.settings) {
 			this.game = new WriteGameEasyDto(this.localStorageService, this.randomService);
-			this.game.init(state.title, state.allowPositionChange);
+			this.game.init(state.settings);
 			this.game.initBoxes();
 		} else {
 			this.router.navigate(['write']);

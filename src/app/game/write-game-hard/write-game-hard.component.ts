@@ -22,9 +22,9 @@ export class WriteGameHardComponent implements OnInit {
 
 	ngOnInit() {
 		const state = this.location.getState() as any;
-		if (state && state.title) {
+		if (state && state.settings) {
 			this.game = new WriteGameHardDto(this.localStorageService, this.randomService);
-			this.game.init(state.title, state.allowPositionChange);
+			this.game.init(state.settings);
 			this.game.setup();
 		} else {
 			this.router.navigate(['write']);

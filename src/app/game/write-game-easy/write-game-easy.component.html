@@ -1,23 +1,4 @@
-<div class="actions-header">
-	<a class="nav-btn"
-		 [routerLink]="['']">
-		<app-svg-icon class="svg-icon svg-icon-sm"
-									iconName="icon-undo2"></app-svg-icon>
-		<span>Начало</span>
-	</a>
-
-	<h3>{{ game.gameSettings?.title }}</h3>
-
-	<a *ngIf="game.hasSelectedFile"
-		 class="nav-btn"
-		 (click)="game.end()">
-
-		<app-svg-icon class="svg-icon svg-icon-sm"
-									iconName="icon-clipboard"></app-svg-icon>
-
-		<span>Резултат</span>
-	</a>
-</div>
+<app-game-header [game]="game"></app-game-header>
 
 <ng-container *ngIf="!game.isOver">
 	<app-game-card [model]="game.currentItem"
@@ -50,7 +31,8 @@
 			</a>
 		</ng-container>
 
-		<a class="circle-btn circle-btn-animated"
+		<a *ngIf="game.settings?.canSkipItems"
+			 class="circle-btn circle-btn-animated"
 			 (click)="game.skipItem()">
 			<app-svg-icon class="svg-icon primary"
 										iconName="icon-redo2"></app-svg-icon>
