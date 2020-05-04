@@ -1,8 +1,8 @@
 <app-game-header [game]="game"></app-game-header>
 
-<div style="width: 100%;">
-	<app-game-card *ngIf="!game.isOver"
-								 [model]="game.currentItem"></app-game-card>
+<div *ngIf="!game.isOver"
+		 style="width: 100%;">
+	<app-game-card [model]="game.currentItem"></app-game-card>
 
 	<div class="card-game-actions">
 		<a class="circle-btn circle-btn-animated"

@@ -12,6 +12,26 @@
 <div>
 	<app-game-title-select (titleSelected)="settings.gameTitle = $event"></app-game-title-select>
 
+	<div *ngIf="hasGameModes"
+			 class="mode-selection">
+		<label>Моля, изберете трудност</label>
+		<div class="radio-group">
+			<input type="radio"
+						 id="easy"
+						 [(ngModel)]="gameMode"
+						 [value]="gameModes.easy">
+			<label for="easy">Лесно</label>
+		</div>
+
+		<div class="radio-group">
+			<input type="radio"
+						 id="hard"
+						 [(ngModel)]="gameMode"
+						 [value]="gameModes.hard">
+			<label for="hard">Трудно</label>
+		</div>
+	</div>
+
 	<div class="mode-selection">
 		<label>Допълнителни настройки</label>
 		<div class="checkbox-group">

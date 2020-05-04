@@ -1,18 +1,20 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { GameSettingsDto } from '../dtos/game-settings.dto';
+import { GameSettingsComponent } from './game-settings.component';
 
 @Component({
 	selector: 'app-learn-game-settings',
-	templateUrl: './learn-game-settings.component.html',
-	styleUrls: ['./learn-game-settings.component.css']
+	templateUrl: './game-settings.component.html',
+	styleUrls: ['./game-settings.component.css']
 })
-export class LearnGameSettingsComponent {
-	settings: GameSettingsDto = new GameSettingsDto();
+export class LearnGameSettingsComponent extends GameSettingsComponent {
+	hasGameModes = false;
 
 	constructor(
 		private router: Router
-	) { }
+	) {
+		super();
+	}
 
 	startGame() {
 		this.router.navigate(['learn/game'],
