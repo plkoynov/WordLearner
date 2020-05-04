@@ -1,0 +1,31 @@
+:host {
+	display: block;
+  width: 100%;
+	background-color: #eeeeee;
+	border: 1px solid #dddddd;
+	border-radius: 4px;
+	margin: 20px 0;
+}
+
+:host > span {
+	display: inline-block;
+	text-align: right;
+  padding: 2px 5px;
+  color: #fff;
+  font-weight: 700;
+	background-color: #1976d2;
+	height: 100%;
+	border: 1px solid #1976d2;
+	border-radius: 4px;
+	animation: progress 1.5s;
+}
+
+@-webkit-keyframes progress {
+   0% { width: 0; }
+}
+@-moz-keyframes progress {
+   0% { width: 0; }
+}
+keyframes progress {
+   0% { width: 0; }
+}
