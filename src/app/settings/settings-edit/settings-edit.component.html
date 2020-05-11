@@ -17,6 +17,17 @@
 </div>
 
 <div style="width: 100%;">
+
+	<a *ngIf="model.title && model.items?.length"
+		 class="btn-link"
+		 style="margin-bottom: 10px;"
+		 [href]="getFileUrl()"
+		 download="{{model.title}}.json">
+		<app-svg-icon class="svg-icon svg-icon-xs"
+									iconName="icon-download3"></app-svg-icon>
+		Експортирай файл
+	</a>
+
 	<div class="input-group">
 		<label>Заглавие:</label>
 		<input [(ngModel)]="model.title">

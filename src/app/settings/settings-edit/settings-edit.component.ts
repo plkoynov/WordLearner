@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { SettingFileItem } from 'src/app/models/setting-file-item.model';
 import { SettingFile } from 'src/app/models/setting-file.model';
@@ -22,7 +23,8 @@ export class SettingsEditComponent implements OnInit {
 	constructor(
 		private location: Location,
 		private storage: LocalStorageService,
-		private router: Router
+		private router: Router,
+		private sanitizer: DomSanitizer
 	) { }
 
 	ngOnInit(): void {
@@ -56,6 +58,11 @@ export class SettingsEditComponent implements OnInit {
 
 	select(item: SettingFileItem): void {
 		this.selectedItem = item;
+	}
+
+	getFileUrl(): SafeUrl {
+		const json = JSON.stringify(this.model);
+		return this.sanitizer.bypassSecurityTrustUrl(`data:text/json;charset=UTF-8,${encodeURIComponent(json)}`);
 	}
 
 	delete(item: SettingFileItem): void {
