@@ -1,13 +1,34 @@
+import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { RandomService } from 'src/app/services/random.service';
 import { GameDto } from './game.dto';
+import { Word } from './word.dto';
 
 export class WriteGameEasyDto extends GameDto {
 	hasResult = false;
 	isAnswerCorrect = false;
 	isAnswerCanceled = false;
-	letterBoxes: { index: number, value: string }[] = [];
+
+	words: Word[] = [];
+
+	lines: WordLine[] = [];
+
+	constructor(
+		private maxCharsInLine: number,
+		protected localStorageService: LocalStorageService,
+		protected randomService: RandomService
+	) {
+		super(localStorageService, randomService);
+	}
 
 	checkAnswer(): void {
-		const answer = this.letterBoxes.map(e => e.value ? e.value.toLowerCase() : ' ').join('');
+		let answer = '';
+		this.words.forEach((word: Word, i) => {
+			answer += word.getValue();
+			if (i !== this.words.length - 1) {
+				answer += ' ';
+			}
+		});
+
 		this.hasResult = true;
 		this.isAnswerCorrect = answer === this.currentItem.back.trim().toLowerCase();
 
@@ -31,17 +52,47 @@ export class WriteGameEasyDto extends GameDto {
 			super.skipItem();
 		}
 
-		this.initBoxes();
+		this.initWords();
 	}
 
-	initBoxes() {
+	initWords() {
 		this.hasResult = false;
 		this.isAnswerCorrect = false;
 		this.isAnswerCanceled = false;
 
-		this.letterBoxes = [];
-		for (let i = 0; i <= this.currentItem.back.length - 1; i++) {
-			this.letterBoxes.push({ index: i, value: '' });
+		this.words = this.currentItem.back.split(' ').map(e => new Word(e));
+		for (let i = 0; i <= this.words.length - 1; i++) {
+			if (i == 0) {
+				const newLine = new WordLine();
+				newLine.appendWord(this.words[i]);
+				this.lines.push(newLine);
+
+				continue;
+			}
+
+			let lastLine = this.lines[this.lines.length - 1];
+			if (lastLine.getLength() + this.words[i].getLength() + 1 <= this.maxCharsInLine) {
+				lastLine.appendWord(this.words[i]);
+			} else {
+				const newLine = new WordLine();
+				newLine.appendWord(this.words[i]);
+				this.lines.push(newLine);
+			}
 		}
+	}
+}
+
+export class WordLine {
+	words: Word[] = [];
+
+	getLength(): number {
+		let result = 0;
+		this.words.forEach((word: Word) => result += word.getLength());
+
+		return result;
+	}
+
+	appendWord(word: Word): void {
+		this.words.push(word);
 	}
 }

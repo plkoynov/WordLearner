@@ -6,6 +6,7 @@
 	width: 50%;
 	height: 250px;
 	margin: 0 auto;
+	text-align: center;
 	-webkit-transition: -webkit-transform 1s;
   -moz-transition: -moz-transform 1s;
   -o-transition: -o-transform 1s;

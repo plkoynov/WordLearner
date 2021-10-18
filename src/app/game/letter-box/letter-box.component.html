@@ -1,0 +1,6 @@
+<input #input
+			 type="text"
+			 maxlength="1"
+			 [ngModel]="letterBox.value"
+			 (ngModelChange)="letterBoxValueChanged($event)"
+			 [disabled]="disabled">

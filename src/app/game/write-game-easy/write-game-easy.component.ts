@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { RandomService } from 'src/app/services/random.service';
+import { LetterBox } from '../dtos/letter-box.dto';
+import { Word } from '../dtos/word.dto';
 import { WriteGameEasyDto } from '../dtos/write-game-easy.dto';
 
 @Component({
@@ -23,19 +25,17 @@ export class WriteGameEasyComponent implements OnInit {
 	ngOnInit() {
 		const state = this.location.getState() as any;
 		if (state && state.settings) {
-			this.game = new WriteGameEasyDto(this.localStorageService, this.randomService);
+			// todo: change length depending on the screen size
+			this.game = new WriteGameEasyDto(12, this.localStorageService, this.randomService);
 			this.game.init(state.settings);
-			this.game.initBoxes();
+			this.game.initWords();
 		} else {
 			this.router.navigate(['write']);
 		}
 	}
 
-	boxValueChanged(box: { index: number, value: string }, value: string) {
-		if (value && value.length > 1) {
-			box.value = value.substr(0, 1);
-		} else {
-			box.value = value;
-		}
+	letterBoxChanged(word: Word, box: LetterBox, newValue: LetterBox): void {
+		const index = word.boxes.indexOf(box);
+		word.boxes[index] = newValue;
 	}
 }

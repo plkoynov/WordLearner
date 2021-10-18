@@ -5,14 +5,21 @@
 								 [isFlipEnabled]="game.hasResult && (game.isAnswerCorrect || game.isAnswerCanceled)"></app-game-card>
 
 	<div class="letter-box-container">
-		<div *ngFor="let box of game.letterBoxes"
-				 class="letter-box"
-				 (click)="input.focus()">
-			<input #input
-						 type="text"
-						 maxlength="1"
-						 [(ngModel)]="box.value"
-						 [disabled]="game.hasResult && (game.isAnswerCorrect || game.isAnswerCanceled)">
+		<div *ngFor="let line of game.lines">
+			<div *ngFor="let word of line.words; let last = last"
+					 style="display: inline;">
+				<letter-box *ngFor="let box of word.boxes; let i = index"
+										[letterBox]="box"
+										(letterBoxChanged)="letterBoxChanged(word, box, $event)"
+										[disabled]="game.hasResult && (game.isAnswerCorrect || game.isAnswerCanceled)">
+				</letter-box>
+
+				<letter-box *ngIf="!last"
+										class="delimiter"
+										[letterBox]="{value: ''}"
+										[disabled]="true">
+				</letter-box>
+			</div>
 		</div>
 	</div>
 
