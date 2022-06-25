@@ -59,6 +59,7 @@ export class WriteGameEasyDto extends GameDto {
 		this.hasResult = false;
 		this.isAnswerCorrect = false;
 		this.isAnswerCanceled = false;
+		this.lines = [];
 
 		this.words = this.currentItem.back.split(' ').map(e => new Word(e));
 		for (let i = 0; i <= this.words.length - 1; i++) {

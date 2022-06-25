@@ -59,6 +59,10 @@ export abstract class GameDto {
 	}
 
 	skipItem(): void {
+		if (this.items.length === 1) {
+			return;
+		}
+
 		let randomItemIndex: number;
 		do {
 			randomItemIndex = this.randomService.getRandomNumber(this.items.length);
