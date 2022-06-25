@@ -3,25 +3,25 @@ import { Router } from '@angular/router';
 import { GameSettingsComponent } from './game-settings.component';
 
 @Component({
-	selector: 'app-learn-game-settings',
-	templateUrl: './game-settings.component.html',
-	styleUrls: ['./game-settings.component.css']
+  selector: 'app-learn-game-settings',
+  templateUrl: './game-settings.component.html',
+  styleUrls: ['./game-settings.component.css'],
 })
 export class LearnGameSettingsComponent extends GameSettingsComponent {
-	hasGameModes = false;
+  hasGameModes = false;
 
-	constructor(
-		private router: Router
-	) {
-		super();
-	}
+  constructor(
+    private router: Router,
+  ) {
+    super();
+  }
 
-	startGame() {
-		this.router.navigate(['learn/game'],
-			{
-				state: {
-					settings: this.settings
-				}
-			});
-	}
+  startGame() {
+    this.router.navigate(['learn/game'],
+      {
+        state: {
+          settings: this.settings,
+        },
+      });
+  }
 }

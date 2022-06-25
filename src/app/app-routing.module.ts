@@ -11,57 +11,87 @@ import { SettingsComponent } from './settings/settings.component';
 
 
 const routes: Routes = [
-	{
-		path: '',
-		component: MenuComponent
-	},
-	{
-		path: 'learn',
-		children: [
-			{
-				path: '',
-				component: LearnGameSettingsComponent
-			},
-			{
-				path: 'game',
-				component: LearnGameComponent
-			}
-		]
-	},
-	{
-		path: 'write',
-		children: [
-			{
-				path: '',
-				component: WriteGameSettingsComponent
-			},
-			{
-				path: 'easy',
-				component: WriteGameEasyComponent
-			},
-			{
-				path: 'hard',
-				component: WriteGameHardComponent
-			}
-		]
-	},
-	{
-		path: 'settings',
-		children: [
-			{
-				path: '',
-				component: SettingsComponent
-			},
-			{
-				path: 'edit',
-				component: SettingsEditComponent
-			}
-		]
-	}
+  {
+    path: '',
+    component: MenuComponent,
+  },
+  {
+    path: 'learn',
+    data: {
+      title: 'Учете',
+    },
+    children: [
+      {
+        path: '',
+        component: LearnGameSettingsComponent,
+        data: {
+          title: 'Настройки',
+        },
+      },
+      {
+        path: 'game',
+        component: LearnGameComponent,
+        data: {
+          title: 'Игра',
+        },
+      },
+    ],
+  },
+  {
+    path: 'write',
+    data: {
+      title: 'Пишете',
+    },
+    children: [
+      {
+        path: '',
+        component: WriteGameSettingsComponent,
+        data: {
+          title: 'Настройки',
+        },
+      },
+      {
+        path: 'easy',
+        component: WriteGameEasyComponent,
+        data: {
+          title: 'Лесна игра',
+        },
+      },
+      {
+        path: 'hard',
+        component: WriteGameHardComponent,
+        data: {
+          title: 'Трудна игра',
+        },
+      },
+    ],
+  },
+  {
+    path: 'settings',
+    data: {
+      title: 'Конфигурации',
+    },
+    children: [
+      {
+        path: '',
+        component: SettingsComponent,
+        data: {
+          title: 'Преглед',
+        },
+      },
+      {
+        path: 'edit',
+        component: SettingsEditComponent,
+        data: {
+          title: 'Редакция',
+        },
+      },
+    ],
+  },
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes)],
-	exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }

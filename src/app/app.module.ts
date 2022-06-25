@@ -22,33 +22,33 @@ import { SettingsEditComponent } from './settings/settings-edit/settings-edit.co
 import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		MenuComponent,
-		GameCardComponent,
-		GameHeaderComponent,
-		GameResultComponent,
-		GameTitleSelectComponent,
-		LearnGameSettingsComponent,
-		LearnGameComponent,
-		WriteGameSettingsComponent,
-		WriteGameEasyComponent,
-		WriteGameHardComponent,
-		LetterBoxComponent,
-		SettingsComponent,
-		SettingsEditComponent,
-		SvgIconComponent,
-		ProgressBarComponent
-	],
-	imports: [
-		BrowserModule,
-		FormsModule,
-		AppRoutingModule
-	],
-	providers: [
-		LocalStorageService,
-		RandomService
-	],
-	bootstrap: [AppComponent]
+  declarations: [
+    AppComponent,
+    MenuComponent,
+    GameCardComponent,
+    GameHeaderComponent,
+    GameResultComponent,
+    GameTitleSelectComponent,
+    LearnGameSettingsComponent,
+    LearnGameComponent,
+    WriteGameSettingsComponent,
+    WriteGameEasyComponent,
+    WriteGameHardComponent,
+    LetterBoxComponent,
+    SettingsComponent,
+    SettingsEditComponent,
+    SvgIconComponent,
+    ProgressBarComponent,
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+  ],
+  providers: [
+    LocalStorageService,
+    RandomService,
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

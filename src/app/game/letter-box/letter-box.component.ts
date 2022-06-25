@@ -2,34 +2,35 @@ import { Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewC
 import { LetterBox } from '../dtos/letter-box.dto';
 
 @Component({
-	selector: 'letter-box',
-	templateUrl: './letter-box.component.html',
-	styleUrls: ['./letter-box.styles.css']
+  selector: 'letter-box',
+  templateUrl: './letter-box.component.html',
+  styleUrls: ['./letter-box.styles.css'],
 })
 export class LetterBoxComponent {
-	@Input() letterBox: LetterBox;
-	@Output() letterBoxChanged: EventEmitter<LetterBox> = new EventEmitter();
+  @Input() letterBox: LetterBox;
 
-	@Input() disabled: boolean;
+  @Output() letterBoxChanged: EventEmitter<LetterBox> = new EventEmitter();
 
-	@ViewChild('input') input: ElementRef;
+  @Input() disabled: boolean;
 
-	@HostListener('click')
-	onLetterBoxClicked(_: Event) {
-		if (this.disabled) {
-			return;
-		}
+  @ViewChild('input') input: ElementRef;
 
-		this.input.nativeElement.focus();
-	}
+  @HostListener('click')
+  onLetterBoxClicked() {
+    if (this.disabled) {
+      return;
+    }
 
-	letterBoxValueChanged(value: string) {
-		if (value && value.length > 1) {
-			this.letterBox.value = value.substr(0, 1);
-		} else {
-			this.letterBox.value = value;
-		}
+    this.input.nativeElement.focus();
+  }
 
-		this.letterBoxChanged.emit(this.letterBox);
-	}
+  letterBoxValueChanged(value: string) {
+    if (value && value.length > 1) {
+      this.letterBox.value = value.substr(0, 1);
+    } else {
+      this.letterBox.value = value;
+    }
+
+    this.letterBoxChanged.emit(this.letterBox);
+  }
 }
