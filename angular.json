@@ -40,7 +40,7 @@
               "outputHashing": "all",
               "sourceMap": false,
               "extractCss": true,
-							"baseHref": "/WordLearner/",
+              "baseHref": "/WordLearner/",
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
