@@ -1,5 +1,4 @@
-<div class="content"
-	 role="main">
+<main class="content">
 
 	<router-outlet></router-outlet>
 
@@ -14,19 +13,19 @@
 			  transform="translate(142.69 -634.312)"
 			  fill="#EEEEEE" />
 	</svg>
+</main>
 
-	<div class="footer">
-		<div>
-			<a href="https://github.com/plkoynov/WordLearner"
-			   target="_blank">
-				<app-svg-icon class="svg-icon svg-icon-xs neutral"
-							  iconName="github"></app-svg-icon>
-			</a>
+<footer>
+	<div>
+		<a href="https://github.com/plkoynov/WordLearner"
+		   target="_blank">
+			<app-svg-icon class="svg-icon svg-icon-xs neutral"
+						  iconName="github"></app-svg-icon>
+		</a>
 
-		</div>
-
-		<div class="version">
-			V{{ version }}
-		</div>
 	</div>
-</div>
+
+	<div class="version">
+		v{{ version }}
+	</div>
+</footer>
