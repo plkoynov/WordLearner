@@ -5,3 +5,16 @@ svg#clouds {
   z-index: -10;
   width: 1920px;
 }
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  padding: 1em;
+}
+
+.footer>.version {
+  margin-left: auto;
+}
