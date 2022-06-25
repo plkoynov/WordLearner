@@ -7,14 +7,14 @@ svg#clouds {
 }
 
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   display: flex;
-  padding: 1em;
-}
-
-.footer>.version {
-  margin-left: auto;
+  justify-content: space-between;
+  padding: .5em;
+  background-color: #1976d2;
+  color: #ffffff;
+  font-size: 12px;
 }
