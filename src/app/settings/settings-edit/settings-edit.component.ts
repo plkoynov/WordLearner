@@ -7,71 +7,73 @@ import { SettingFile } from 'src/app/models/setting-file.model';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
-	selector: 'app-settings-edit',
-	templateUrl: './settings-edit.component.html',
-	styleUrls: ['./settings-edit.component.css']
+  selector: 'app-settings-edit',
+  templateUrl: './settings-edit.component.html',
+  styleUrls: ['./settings-edit.component.css'],
 })
 export class SettingsEditComponent implements OnInit {
-	model = new SettingFile();
-	selectedItem: SettingFileItem;
+  model = new SettingFile();
 
-	private newItemNumber = 1;
+  selectedItem: SettingFileItem;
 
-	isEditingFront: boolean;
-	isEditingBack: boolean;
+  private newItemNumber = 1;
 
-	constructor(
-		private location: Location,
-		private storage: LocalStorageService,
-		private router: Router,
-		private sanitizer: DomSanitizer
-	) { }
+  isEditingFront: boolean;
 
-	ngOnInit(): void {
-		const state = this.location.getState() as any;
-		if (state && state.title) {
-			this.model = this.storage.get(state.title);
-		}
-	}
+  isEditingBack: boolean;
 
-	addItem() {
-		if (!this.model.items) {
-			this.model.items = [];
-		}
+  constructor(
+    private location: Location,
+    private storage: LocalStorageService,
+    private router: Router,
+    private sanitizer: DomSanitizer,
+  ) { }
 
-		const newItem = new SettingFileItem(
-			`Нов елемент ${this.newItemNumber}`,
-			`Нов елемент ${this.newItemNumber}`
-		);
-		this.model.items.unshift(newItem);
+  ngOnInit(): void {
+    const state = this.location.getState() as any;
+    if (state && state.title) {
+      this.model = this.storage.get(state.title);
+    }
+  }
 
-		this.newItemNumber++;
-	}
+  addItem() {
+    if (!this.model.items) {
+      this.model.items = [];
+    }
 
-	save(): void {
-		if (this.model.title && this.model.items && this.model.items.length) {
-			this.storage.save(this.model);
-		}
+    const newItem = new SettingFileItem(
+      `Нов елемент ${this.newItemNumber}`,
+      `Нов елемент ${this.newItemNumber}`,
+    );
+    this.model.items.unshift(newItem);
 
-		this.router.navigate(['settings']);
-	}
+    this.newItemNumber++;
+  }
 
-	select(item: SettingFileItem): void {
-		this.selectedItem = item;
-	}
+  save(): void {
+    if (this.model.title && this.model.items && this.model.items.length) {
+      this.storage.save(this.model);
+    }
 
-	getFileUrl(): SafeUrl {
-		const json = JSON.stringify(this.model);
-		return this.sanitizer.bypassSecurityTrustUrl(`data:text/json;charset=UTF-8,${encodeURIComponent(json)}`);
-	}
+    this.router.navigate(['settings']);
+  }
 
-	delete(item: SettingFileItem): void {
-		const index = this.model.items.indexOf(item);
-		const indexOfSelectedItem = this.model.items.indexOf(this.selectedItem);
-		if (index === indexOfSelectedItem) {
-			this.selectedItem = null;
-		}
+  select(item: SettingFileItem): void {
+    this.selectedItem = item;
+  }
 
-		this.model.items.splice(index, 1);
-	}
+  getFileUrl(): SafeUrl {
+    const json = JSON.stringify(this.model);
+    return this.sanitizer.bypassSecurityTrustUrl(`data:text/json;charset=UTF-8,${encodeURIComponent(json)}`);
+  }
+
+  delete(item: SettingFileItem): void {
+    const index = this.model.items.indexOf(item);
+    const indexOfSelectedItem = this.model.items.indexOf(this.selectedItem);
+    if (index === indexOfSelectedItem) {
+      this.selectedItem = null;
+    }
+
+    this.model.items.splice(index, 1);
+  }
 }

@@ -11,57 +11,57 @@ import { SettingsComponent } from './settings/settings.component';
 
 
 const routes: Routes = [
-	{
-		path: '',
-		component: MenuComponent
-	},
-	{
-		path: 'learn',
-		children: [
-			{
-				path: '',
-				component: LearnGameSettingsComponent
-			},
-			{
-				path: 'game',
-				component: LearnGameComponent
-			}
-		]
-	},
-	{
-		path: 'write',
-		children: [
-			{
-				path: '',
-				component: WriteGameSettingsComponent
-			},
-			{
-				path: 'easy',
-				component: WriteGameEasyComponent
-			},
-			{
-				path: 'hard',
-				component: WriteGameHardComponent
-			}
-		]
-	},
-	{
-		path: 'settings',
-		children: [
-			{
-				path: '',
-				component: SettingsComponent
-			},
-			{
-				path: 'edit',
-				component: SettingsEditComponent
-			}
-		]
-	}
+  {
+    path: '',
+    component: MenuComponent,
+  },
+  {
+    path: 'learn',
+    children: [
+      {
+        path: '',
+        component: LearnGameSettingsComponent,
+      },
+      {
+        path: 'game',
+        component: LearnGameComponent,
+      },
+    ],
+  },
+  {
+    path: 'write',
+    children: [
+      {
+        path: '',
+        component: WriteGameSettingsComponent,
+      },
+      {
+        path: 'easy',
+        component: WriteGameEasyComponent,
+      },
+      {
+        path: 'hard',
+        component: WriteGameHardComponent,
+      },
+    ],
+  },
+  {
+    path: 'settings',
+    children: [
+      {
+        path: '',
+        component: SettingsComponent,
+      },
+      {
+        path: 'edit',
+        component: SettingsEditComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes)],
-	exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }

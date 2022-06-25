@@ -2,31 +2,32 @@ import { Component, Input } from '@angular/core';
 import { SettingFileItem } from 'src/app/models/setting-file-item.model';
 
 @Component({
-	selector: 'app-game-card',
-	templateUrl: './game-card.component.html',
-	styleUrls: ['./game-card.component.css']
+  selector: 'app-game-card',
+  templateUrl: './game-card.component.html',
+  styleUrls: ['./game-card.component.css'],
 })
 export class GameCardComponent {
-	isFlipped = false;
+  isFlipped = false;
 
-	model: SettingFileItem;
-	@Input('model') set modelSetter(value: SettingFileItem) {
-		if (!value) {
-			return;
-		}
+  model: SettingFileItem;
 
-		const timeout = this.isFlipped ? 300 : 0;
-		setTimeout(() => this.model = value, timeout);
-		this.isFlipped = false;
-	}
+  @Input('model') set modelSetter(value: SettingFileItem) {
+    if (!value) {
+      return;
+    }
 
-	@Input() isFlipEnabled = true;
+    const timeout = this.isFlipped ? 300 : 0;
+    setTimeout(() => this.model = value, timeout);
+    this.isFlipped = false;
+  }
 
-	flip() {
-		if (!this.isFlipEnabled) {
-			return;
-		}
+  @Input() isFlipEnabled = true;
 
-		this.isFlipped = !this.isFlipped;
-	}
+  flip() {
+    if (!this.isFlipEnabled) {
+      return;
+    }
+
+    this.isFlipped = !this.isFlipped;
+  }
 }

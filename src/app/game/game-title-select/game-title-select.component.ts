@@ -3,23 +3,24 @@ import { SettingFile } from 'src/app/models/setting-file.model';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
-	selector: 'app-game-title-select',
-	templateUrl: './game-title-select.component.html',
-	styleUrls: ['./game-title-select.component.css'],
-	changeDetection: ChangeDetectionStrategy.OnPush
+  selector: 'app-game-title-select',
+  templateUrl: './game-title-select.component.html',
+  styleUrls: ['./game-title-select.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GameTitleSelectComponent implements OnInit {
-	selectedTitle: string;
-	titles: string[] = [];
+  selectedTitle: string;
 
-	@Output() titleSelected: EventEmitter<string> = new EventEmitter();
+  titles: string[] = [];
 
-	constructor(private localStorageService: LocalStorageService) { }
+  @Output() titleSelected: EventEmitter<string> = new EventEmitter();
 
-	ngOnInit(): void {
-		this.titles = this.localStorageService.getAll().map((file: SettingFile) => file.title);
-		if (this.titles.length === 1) {
-			this.titleSelected.emit(this.titles[0]);
-		}
-	}
+  constructor(private localStorageService: LocalStorageService) { }
+
+  ngOnInit(): void {
+    this.titles = this.localStorageService.getAll().map((file: SettingFile) => file.title);
+    if (this.titles.length === 1) {
+      this.titleSelected.emit(this.titles[0]);
+    }
+  }
 }

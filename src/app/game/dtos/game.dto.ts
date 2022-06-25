@@ -4,84 +4,87 @@ import { RandomService } from 'src/app/services/random.service';
 import { GameSettingsDto } from './game-settings.dto';
 
 export abstract class GameDto {
-	title: string;
-	items: SettingFileItem[] = [];
+  title: string;
 
-	isOver = false;
-	hasSelectedFile = false;
+  items: SettingFileItem[] = [];
 
-	currentItem: SettingFileItem;
-	answers: { right: SettingFileItem[], wrong: SettingFileItem[] } = { right: [], wrong: [] };
+  isOver = false;
 
-	settings: GameSettingsDto;
+  hasSelectedFile = false;
 
-	protected currentItemIndex = -1;
+  currentItem: SettingFileItem;
 
-	constructor(
-		protected localStorageService: LocalStorageService,
-		protected randomService: RandomService
-	) { }
+  answers: { right: SettingFileItem[], wrong: SettingFileItem[] } = { right: [], wrong: [] };
 
-	init(settings: GameSettingsDto) {
-		const file = this.localStorageService.get(settings.gameTitle);
-		this.hasSelectedFile = true;
-		this.title = file.title;
-		this.items = file.items;
+  settings: GameSettingsDto;
 
-		this.settings = settings;
+  protected currentItemIndex = -1;
 
-		this.setCurrentItem();
-	}
+  constructor(
+    protected localStorageService: LocalStorageService,
+    protected randomService: RandomService,
+  ) { }
 
-	end() {
-		this.isOver = true;
-	}
+  init(settings: GameSettingsDto) {
+    const file = this.localStorageService.get(settings.gameTitle);
+    this.hasSelectedFile = true;
+    this.title = file.title;
+    this.items = file.items;
 
-	protected setCurrentItem() {
-		if (this.currentItemIndex >= 0) {
-			this.items.splice(this.currentItemIndex, 1);
-		}
+    this.settings = settings;
 
-		if (!this.items.length) {
-			this.end();
-			return;
-		}
+    this.setCurrentItem();
+  }
 
-		this.currentItemIndex = this.randomService.getRandomNumber(this.items.length);
-		this.currentItem = new SettingFileItem(
-			this.items[this.currentItemIndex].front,
-			this.items[this.currentItemIndex].back
-		);
+  end() {
+    this.isOver = true;
+  }
 
-		if (this.settings.allowPositionChange) {
-			this.randomizeItem(this.currentItem);
-		}
-	}
+  protected setCurrentItem() {
+    if (this.currentItemIndex >= 0) {
+      this.items.splice(this.currentItemIndex, 1);
+    }
 
-	skipItem(): void {
-		if (this.items.length === 1) {
-			return;
-		}
+    if (!this.items.length) {
+      this.end();
+      return;
+    }
 
-		let randomItemIndex: number;
-		do {
-			randomItemIndex = this.randomService.getRandomNumber(this.items.length);
-		} while (randomItemIndex === this.currentItemIndex);
+    this.currentItemIndex = this.randomService.getRandomNumber(this.items.length);
+    this.currentItem = new SettingFileItem(
+      this.items[this.currentItemIndex].front,
+      this.items[this.currentItemIndex].back,
+    );
 
-		this.currentItemIndex = randomItemIndex;
-		this.currentItem = new SettingFileItem(
-			this.items[this.currentItemIndex].front,
-			this.items[this.currentItemIndex].back
-		);
+    if (this.settings.allowPositionChange) {
+      this.randomizeItem(this.currentItem);
+    }
+  }
 
-		if (this.settings.allowPositionChange) {
-			this.randomizeItem(this.currentItem);
-		}
-	}
+  skipItem(): void {
+    if (this.items.length === 1) {
+      return;
+    }
 
-	protected randomizeItem(item: SettingFileItem): void {
-		if (this.randomService.getRandomNumber(10) % 2 === 0) {
-			item.swapSides();
-		}
-	}
+    let randomItemIndex: number;
+    do {
+      randomItemIndex = this.randomService.getRandomNumber(this.items.length);
+    } while (randomItemIndex === this.currentItemIndex);
+
+    this.currentItemIndex = randomItemIndex;
+    this.currentItem = new SettingFileItem(
+      this.items[this.currentItemIndex].front,
+      this.items[this.currentItemIndex].back,
+    );
+
+    if (this.settings.allowPositionChange) {
+      this.randomizeItem(this.currentItem);
+    }
+  }
+
+  protected randomizeItem(item: SettingFileItem): void {
+    if (this.randomService.getRandomNumber(10) % 2 === 0) {
+      item.swapSides();
+    }
+  }
 }

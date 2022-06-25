@@ -4,25 +4,25 @@ import { GameMode } from '../enums/game-mode.enum';
 import { GameSettingsComponent } from './game-settings.component';
 
 @Component({
-	selector: 'app-write-game-settings',
-	templateUrl: './game-settings.component.html',
-	styleUrls: ['./game-settings.component.css']
+  selector: 'app-write-game-settings',
+  templateUrl: './game-settings.component.html',
+  styleUrls: ['./game-settings.component.css'],
 })
 export class WriteGameSettingsComponent extends GameSettingsComponent {
-	hasGameModes = true;
+  hasGameModes = true;
 
-	constructor(
-		private router: Router
-	) {
-		super();
-	}
+  constructor(
+    private router: Router,
+  ) {
+    super();
+  }
 
-	startGame() {
-		this.router.navigate(['write', `${GameMode[this.gameMode]}`],
-			{
-				state: {
-					settings: this.settings
-				}
-			});
-	}
+  startGame() {
+    this.router.navigate(['write', `${GameMode[this.gameMode]}`],
+      {
+        state: {
+          settings: this.settings,
+        },
+      });
+  }
 }

@@ -1,47 +1,49 @@
 import { GameDto } from './game.dto';
 
 export class WriteGameHardDto extends GameDto {
-	hasResult = false;
-	isAnswerCorrect = false;
-	isAnswerCanceled = false;
-	answer: string;
+  hasResult = false;
 
-	checkAnswer(): void {
-		this.hasResult = true;
-		if (!this.answer || !this.answer.trim()) {
-			this.isAnswerCorrect = false;
-			return;
-		}
+  isAnswerCorrect = false;
 
-		this.isAnswerCorrect = this.answer.toLowerCase() === this.currentItem.back.toLowerCase();
+  isAnswerCanceled = false;
 
-		if (this.isAnswerCorrect) {
-			this.answers.right.push(this.currentItem);
-		}
-	}
+  answer: string;
 
-	cancelItem(): void {
-		this.hasResult = true;
-		this.isAnswerCanceled = true;
+  checkAnswer(): void {
+    this.hasResult = true;
+    if (!this.answer || !this.answer.trim()) {
+      this.isAnswerCorrect = false;
+      return;
+    }
 
-		this.answers.wrong.push(this.currentItem);
-	}
+    this.isAnswerCorrect = this.answer.toLowerCase() === this.currentItem.back.toLowerCase();
 
-	skipItem(): void {
-		if (this.hasResult && (this.isAnswerCorrect || this.isAnswerCanceled)) {
-			super.setCurrentItem();
-		}
-		else {
-			super.skipItem();
-		}
+    if (this.isAnswerCorrect) {
+      this.answers.right.push(this.currentItem);
+    }
+  }
 
-		this.setup();
-	}
+  cancelItem(): void {
+    this.hasResult = true;
+    this.isAnswerCanceled = true;
 
-	setup() {
-		this.hasResult = false;
-		this.isAnswerCorrect = false;
-		this.isAnswerCanceled = false;
-		this.answer = '';
-	}
+    this.answers.wrong.push(this.currentItem);
+  }
+
+  skipItem(): void {
+    if (this.hasResult && (this.isAnswerCorrect || this.isAnswerCanceled)) {
+      super.setCurrentItem();
+    } else {
+      super.skipItem();
+    }
+
+    this.setup();
+  }
+
+  setup() {
+    this.hasResult = false;
+    this.isAnswerCorrect = false;
+    this.isAnswerCanceled = false;
+    this.answer = '';
+  }
 }

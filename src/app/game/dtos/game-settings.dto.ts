@@ -1,5 +1,7 @@
 export class GameSettingsDto {
-	gameTitle: string;
-	allowPositionChange = false;
-	canSkipItems = true;
+  gameTitle: string;
+
+  allowPositionChange = false;
+
+  canSkipItems = true;
 }
