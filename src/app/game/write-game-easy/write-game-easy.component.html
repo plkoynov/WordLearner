@@ -2,22 +2,22 @@
 
 <ng-container *ngIf="!game.isOver">
 	<app-game-card [model]="game.currentItem"
-								 [isFlipEnabled]="game.hasResult && (game.isAnswerCorrect || game.isAnswerCanceled)"></app-game-card>
+				   [isFlipEnabled]="game.hasResult && (game.isAnswerCorrect || game.isAnswerCanceled)"></app-game-card>
 
 	<div class="letter-box-container">
 		<div *ngFor="let line of game.lines">
 			<div *ngFor="let word of line.words; let last = last"
-					 style="display: inline;">
+				 style="display: inline;">
 				<letter-box *ngFor="let box of word.boxes; let i = index"
-										[letterBox]="box"
-										(letterBoxChanged)="letterBoxChanged(word, box, $event)"
-										[disabled]="game.hasResult && (game.isAnswerCorrect || game.isAnswerCanceled)">
+							[letterBox]="box"
+							(letterBoxChanged)="letterBoxChanged(word, box, $event)"
+							[disabled]="game.hasResult && (game.isAnswerCorrect || game.isAnswerCanceled)">
 				</letter-box>
 
 				<letter-box *ngIf="!last"
-										class="delimiter"
-										[letterBox]="{value: ''}"
-										[disabled]="true">
+							class="delimiter"
+							[letterBox]="{value: ''}"
+							[disabled]="true">
 				</letter-box>
 			</div>
 		</div>
@@ -26,31 +26,31 @@
 	<div class="card-game-actions">
 		<ng-container *ngIf="(!game.hasResult || !game.isAnswerCorrect) && !game.isAnswerCanceled">
 			<a class="circle-btn circle-btn-animated"
-				 (click)="game.checkAnswer()">
+			   (click)="game.checkAnswer()">
 				<app-svg-icon class="svg-icon success"
-											iconName="icon-checkmark"></app-svg-icon>
+							  iconName="icon-checkmark"></app-svg-icon>
 			</a>
 
 			<a class="circle-btn circle-btn-animated"
-				 (click)="game.cancelItem()">
+			   (click)="game.cancelItem()">
 				<app-svg-icon class="svg-icon svg-icon-sm danger"
-											iconName="icon-cross"></app-svg-icon>
+							  iconName="icon-cross"></app-svg-icon>
 			</a>
 		</ng-container>
 
 		<a *ngIf="game.settings?.canSkipItems"
-			 class="circle-btn circle-btn-animated"
-			 (click)="game.skipItem()">
+		   class="circle-btn circle-btn-animated"
+		   (click)="game.skipItem()">
 			<app-svg-icon class="svg-icon primary"
-										iconName="icon-redo2"></app-svg-icon>
+						  iconName="icon-redo2"></app-svg-icon>
 		</a>
 	</div>
 
 	<div *ngIf="game.hasResult && !game.isAnswerCanceled"
-			 class="answer-message {{ game.isAnswerCorrect ? 'answer-message-correct' : 'answer-message-incorrect' }}">
+		 class="answer-message {{ game.isAnswerCorrect ? 'answer-message-correct' : 'answer-message-incorrect' }}">
 		{{ game.isAnswerCorrect ? 'Верен отговор! Браво!' : 'Грешен отговор! Опитай пак!' }}
 	</div>
 </ng-container>
 
 <app-game-result *ngIf="game.isOver"
-								 [answers]="game.answers"></app-game-result>
+				 [answers]="game.answers"></app-game-result>
