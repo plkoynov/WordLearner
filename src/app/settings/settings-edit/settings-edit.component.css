@@ -1,8 +1,8 @@
 :host {
 	display: flex;
 	flex-direction: column;
-  align-items: center;
-  justify-content: center;
+	align-items: center;
+	justify-content: center;
 }
 
 .edit-container {
@@ -12,8 +12,8 @@
 }
 
 .item-container {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 	justify-content: space-between;
 	padding: 5px;
 	border: 1px solid transparent;
@@ -21,41 +21,41 @@
 
 .item-container:hover,
 .item-container.selected {
-	color: #1976d2;
+	color: var(--blue);
 	background-color: #fafafa;
 	border-color: #eee;
 	cursor: pointer;
 }
 
-.item-container > div {
+.item-container>div {
 	padding: 2px 0;
 	font-size: 15px;
 }
 
 .game-card {
 	width: 70%;
-  height: 250px;
-  margin: 0 auto 20px;
+	height: 250px;
+	margin: 0 auto 20px;
 }
 
 .game-card div {
 	display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  font-weight: bold;
-  color: #fff;
-  font-size: 36px;
-  outline: none;
-  border-radius: 4px;
-  box-shadow: 0 3px 10px #656256;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 100%;
+	font-weight: bold;
+	color: #fff;
+	font-size: 36px;
+	outline: none;
+	border-radius: 4px;
+	box-shadow: 0 3px 10px var(--gray);
 }
 
 .game-card .front {
-	background: linear-gradient(#ff8811, #ffaf60);
+	background: linear-gradient(var(--orange), var(--orange-secondary));
 }
 
 .game-card .back {
-	background: linear-gradient(#1976d2, #5ca6ef);
+	background: linear-gradient(var(--blue), var(--blue-secondary));
 }

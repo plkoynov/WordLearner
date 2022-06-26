@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GameMode } from '../enums/game-mode.enum';
 import { GameSettingsComponent } from './game-settings.component';
 
@@ -13,13 +13,15 @@ export class WriteGameSettingsComponent extends GameSettingsComponent {
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
   ) {
     super();
   }
 
   startGame() {
-    this.router.navigate(['write', `${GameMode[this.gameMode]}`],
+    this.router.navigate([GameMode[this.gameMode]],
       {
+        relativeTo: this.route,
         state: {
           settings: this.settings,
         },

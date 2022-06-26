@@ -1,24 +1,24 @@
 :host {
-	display: inline-block;
+  display: inline-block;
   margin: 10px;
   padding: .8em;
-  border: 1px dotted #656256;
+  border: 1px dotted var(--gray);
   border-radius: 4px;
-  background: #ffaf60;
+  background: var(--orange-secondary);
   cursor: pointer;
   max-width: 6%;
 }
 
 :host.delimiter {
-	visibility: hidden;
+  visibility: hidden;
 }
 
-:host > input {
-	background: inherit;
+:host>input {
+  background: inherit;
   border: none;
   width: 100%;
   outline: none;
-  color: #ffffff;
+  color: var(--white);
   font-size: 24px;
   text-align: center;
 }

@@ -8,6 +8,8 @@ import { WriteGameHardComponent } from './game/write-game-hard/write-game-hard.c
 import { MenuComponent } from './menu/menu.component';
 import { SettingsEditComponent } from './settings/settings-edit/settings-edit.component';
 import { SettingsComponent } from './settings/settings.component';
+import { ROUTES } from './constants/routes.constant';
+import { GameResultComponent } from './game/game-result/game-result.component';
 
 
 const routes: Routes = [
@@ -16,7 +18,7 @@ const routes: Routes = [
     component: MenuComponent,
   },
   {
-    path: 'learn',
+    path: ROUTES.LEARN.SETTINGS,
     data: {
       title: 'Учете',
     },
@@ -29,7 +31,7 @@ const routes: Routes = [
         },
       },
       {
-        path: 'game',
+        path: ROUTES.LEARN.GAME,
         component: LearnGameComponent,
         data: {
           title: 'Игра',
@@ -38,7 +40,7 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'write',
+    path: ROUTES.WRITE.SETTINGS,
     data: {
       title: 'Пишете',
     },
@@ -51,14 +53,14 @@ const routes: Routes = [
         },
       },
       {
-        path: 'easy',
+        path: ROUTES.WRITE.EASY_GAME,
         component: WriteGameEasyComponent,
         data: {
           title: 'Лесна игра',
         },
       },
       {
-        path: 'hard',
+        path: ROUTES.WRITE.HARD_GAME,
         component: WriteGameHardComponent,
         data: {
           title: 'Трудна игра',
@@ -67,7 +69,14 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'settings',
+    path: ROUTES.RESULT,
+    component: GameResultComponent,
+    data: {
+      title: 'Резултат',
+    }
+  },
+  {
+    path: ROUTES.SETTINGS.LIST,
     data: {
       title: 'Конфигурации',
     },
@@ -80,7 +89,7 @@ const routes: Routes = [
         },
       },
       {
-        path: 'edit',
+        path: ROUTES.SETTINGS.EDIT,
         component: SettingsEditComponent,
         data: {
           title: 'Редакция',

@@ -1,3 +1,4 @@
+import { Subject } from 'rxjs';
 import { SettingFileItem } from 'src/app/models/setting-file-item.model';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { RandomService } from 'src/app/services/random.service';
@@ -18,6 +19,8 @@ export abstract class GameDto {
 
   settings: GameSettingsDto;
 
+  gameOver: Subject<void>;
+
   protected currentItemIndex = -1;
 
   constructor(
@@ -33,11 +36,15 @@ export abstract class GameDto {
 
     this.settings = settings;
 
+    this.gameOver = new Subject();
+
     this.setCurrentItem();
   }
 
   end() {
     this.isOver = true;
+    this.gameOver.next();
+    this.gameOver.complete();
   }
 
   protected setCurrentItem() {

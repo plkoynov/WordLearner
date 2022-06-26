@@ -1,0 +1,10 @@
+<a class="flat-btn flat-btn-animated space-between"
+   [routerLink]="menuItem.routerLink">
+    <app-svg-icon class="svg-icon"
+                  [iconName]="menuItem.icon"></app-svg-icon>
+
+    <span>{{ menuItem.title }}</span>
+
+    <app-svg-icon class="svg-icon svg-icon-sm"
+                  iconName="icon-cheveron-right"></app-svg-icon>
+</a>

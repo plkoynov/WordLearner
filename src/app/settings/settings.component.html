@@ -1,8 +1,8 @@
 <div class="actions-header">
 	<a class="nav-btn"
-		 [routerLink]="['']">
+	   [routerLink]="['']">
 		<app-svg-icon class="svg-icon svg-icon-sm"
-									iconName="icon-undo2"></app-svg-icon>
+					  iconName="icon-undo2"></app-svg-icon>
 		<span>Назад</span>
 	</a>
 
@@ -11,41 +11,41 @@
 
 <div style="width: 100%; display: flex; justify-content: space-between;">
 	<a class="btn-link"
-		 [routerLink]="['edit']">
+	   [routerLink]="['edit']">
 		<app-svg-icon class="svg-icon svg-icon-xs"
-									iconName="icon-plus"></app-svg-icon>
+					  iconName="icon-plus"></app-svg-icon>
 		Създай
 	</a>
 
 	<a class="btn-link"
-		 (click)="fileInput.click()">
+	   (click)="fileInput.click()">
 		<app-svg-icon class="svg-icon svg-icon-xs"
-									iconName="icon-upload3"></app-svg-icon>
+					  iconName="icon-upload3"></app-svg-icon>
 		Импорт от файл
 	</a>
 
 	<input #fileInput
-				 type="file"
-				 style="display: none"
-				 (change)="handleFileInput($event.target.files)">
+		   type="file"
+		   style="display: none"
+		   (change)="handleFileInput($event.target.files)">
 </div>
 
 <div style="width: 100%; padding: 10px 0;">
 	<div *ngFor="let title of settingFilesTitles"
-			 class="settings-row">
+		 class="settings-row">
 		<a class="circle-btn circle-btn-sm circle-btn-animated"
-			 style="margin-left: 0;"
-			 (click)="delete(title)">
+		   style="margin-left: 0;"
+		   (click)="delete(title)">
 			<app-svg-icon class="svg-icon svg-icon-xs danger"
-										iconName="icon-bin"></app-svg-icon>
+						  iconName="icon-bin"></app-svg-icon>
 		</a>
 
 		<a class="circle-btn circle-btn-sm circle-btn-animated"
-			 style="margin-left: 0;"
-			 [routerLink]="['edit']"
-			 [state]="{ title: title }">
+		   style="margin-left: 0;"
+		   [routerLink]="['edit']"
+		   [state]="{ title: title }">
 			<app-svg-icon class="svg-icon svg-icon-xs"
-										iconName="icon-search"></app-svg-icon>
+						  iconName="icon-search"></app-svg-icon>
 		</a>
 
 		<span>{{ title }}</span>
