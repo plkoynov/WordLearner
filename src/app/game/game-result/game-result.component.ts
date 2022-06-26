@@ -12,7 +12,7 @@ export class GameResultComponent {
 
   result: number;
 
-  @Input('answers') set answersSetter(value: { right: SettingFileItem[], wrong: SettingFileItem[] }) {
+  @Input() set answersSetter(value: { right: SettingFileItem[], wrong: SettingFileItem[] }) {
     this.answers = value;
 
     const percentage = (this.answers.right.length / (this.answers.right.length + this.answers.wrong.length)) * 100;
