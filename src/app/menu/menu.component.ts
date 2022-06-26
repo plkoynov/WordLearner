@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ROUTES } from '../constants/routes.constant';
+import { MenuItem } from '../models/menu-item.model';
 
 @Component({
   selector: 'app-menu',
@@ -7,10 +9,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MenuComponent {
-  menuItems: { routerLink: string, icon: string, title: string }[] = [
-    { routerLink: 'learn', icon: 'icon-education', title: 'Учете' },
-    { routerLink: 'write', icon: 'icon-pencil2', title: 'Пишете' },
-    { routerLink: 'settings', icon: 'icon-cog', title: 'Настройки' },
-    { routerLink: 'settings', icon: 'icon-info', title: 'Помощ' },
+  menuItems: MenuItem[] = [
+    { routerLink: ROUTES.LEARN.SETTINGS, icon: 'icon-education', title: 'Учете' },
+    { routerLink: ROUTES.WRITE.SETTINGS, icon: 'icon-pencil2', title: 'Пишете' },
+    { routerLink: ROUTES.SETTINGS.LIST, icon: 'icon-cog', title: 'Настройки' },
+    { routerLink: ROUTES.SETTINGS.LIST, icon: 'icon-info', title: 'Помощ' },
   ];
 }
