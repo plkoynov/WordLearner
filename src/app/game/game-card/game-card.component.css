@@ -1,13 +1,13 @@
 :host {
-	width: 100%;
+  width: 100%;
 }
 
 .game-card {
-	width: 50%;
-	height: 250px;
-	margin: 0 auto;
-	text-align: center;
-	-webkit-transition: -webkit-transform 1s;
+  width: 50%;
+  height: 250px;
+  margin: 0 auto;
+  text-align: center;
+  -webkit-transition: -webkit-transform 1s;
   -moz-transition: -moz-transform 1s;
   -o-transition: -o-transform 1s;
   transition: transform 1s;
@@ -15,13 +15,13 @@
   -moz-transform-style: preserve-3d;
   -o-transform-style: preserve-3d;
   transform-style: preserve-3d;
-	-webkit-transform-origin: 50% 50%;
-	cursor: pointer;
+  -webkit-transform-origin: 50% 50%;
+  cursor: pointer;
 }
 
 .game-card div {
-	position: absolute;
-	display: flex;
+  position: absolute;
+  display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
@@ -29,31 +29,31 @@
   font-weight: bold;
   color: #fff;
   font-size: 36px;
-	outline: none;
-	border-radius: 4px;
-	box-shadow: 0 3px 10px #656256;
+  outline: none;
+  border-radius: 4px;
+  box-shadow: 0 3px 10px var(--gray);
 
-	-webkit-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -o-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
 .game-card .front {
-	background: linear-gradient(#FF8811, #ffaf60);
+  background: linear-gradient(var(--orange), var(--orange-secondary));
 }
 
 .game-card .back {
-	background: linear-gradient(#1976d2, #5ca6ef);
-	-webkit-transform: rotateX( 180deg );
-  -moz-transform: rotateX( 180deg );
-  -o-transform: rotateX( 180deg );
-  transform: rotateX( 180deg );
+  background: linear-gradient(var(--blue), var(--blue-secondary));
+  -webkit-transform: rotateX(180deg);
+  -moz-transform: rotateX(180deg);
+  -o-transform: rotateX(180deg);
+  transform: rotateX(180deg);
 }
 
 .game-card.flipped {
-	-webkit-transform: rotateX( 180deg );
-  -moz-transform: rotateX( 180deg );
-  -o-transform: rotateX( 180deg );
-  transform: rotateX( 180deg );
+  -webkit-transform: rotateX(180deg);
+  -moz-transform: rotateX(180deg);
+  -o-transform: rotateX(180deg);
+  transform: rotateX(180deg);
 }

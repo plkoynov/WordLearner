@@ -1,8 +1,8 @@
 :host {
 	display: flex;
 	flex-direction: column;
-  align-items: center;
-  justify-content: center;
+	align-items: center;
+	justify-content: center;
 }
 
 .settings-row {
@@ -11,9 +11,9 @@
 	margin-bottom: 10px;
 	font-size: 16px;
 	font-weight: 700;
-	color: #1976d2;
+	color: var(--blue);
 }
 
-.settings-row > span {
+.settings-row>span {
 	cursor: default;
 }

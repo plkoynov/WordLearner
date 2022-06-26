@@ -1,3 +1,15 @@
+:root {
+  --orange: #FF8811;
+  --orange-secondary: #FFAF60;
+  --blue: #1976D2;
+  --blue-secondary: #5CA6EF;
+  --gray: #656256;
+  --red: #FF0000;
+  --green: #299E29;
+  --white: #FFFFFF;
+  --white-secondary: #EEEEEE;
+}
+
 html {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -34,14 +46,14 @@ p {
 }
 
 label {
-  color: #656256;
+  color: var(--gray);
   margin-bottom: 10px;
 }
 
 a,
 a:visited,
 a:hover {
-  color: #1976d2;
+  color: var(--blue);
   text-decoration: none;
 }
 
@@ -62,7 +74,7 @@ a:hover {
 /* Buttons */
 .flat-btn {
   border-radius: 4px;
-  border: 1px solid #656256;
+  border: 1px solid var(--gray);
   background-color: #fafafa;
   margin: 5px 0;
   padding: 20px;
@@ -80,7 +92,7 @@ a:hover {
 
 .flat-btn.flat-btn-animated:hover {
   transform: translateY(-3px);
-  box-shadow: 0 3px 10px #656256;
+  box-shadow: 0 3px 10px var(--gray);
 }
 
 .nav-btn {
@@ -89,7 +101,7 @@ a:hover {
   justify-content: space-around;
   align-items: center;
   border-radius: 4px;
-  border: 1px solid #eeeeee;
+  border: 1px solid var(--white-secondary);
   background-color: #fafafa;
   line-height: 16px;
   padding: 7px 10px;
@@ -105,7 +117,7 @@ a:hover {
 }
 
 .nav-btn:hover {
-  background-color: #eeeeee;
+  background-color: var(--white-secondary);
 }
 
 .btn-link {
@@ -130,8 +142,8 @@ a.btn-link:hover {
   width: 40px;
   border-radius: 40px;
   margin: 8px;
-  background-color: #ffffff;
-  border: 1px solid #eeeeee;
+  background-color: var(--white);
+  border: 1px solid var(--white-secondary);
   cursor: pointer;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
@@ -159,19 +171,19 @@ a.btn-link:hover {
 }
 
 .svg-icon.primary>svg {
-  fill: #ff8811;
+  fill: var(--orange);
 }
 
 .svg-icon.danger>svg {
-  fill: #ff0000;
+  fill: var(--red);
 }
 
 .svg-icon.success>svg {
-  fill: #299e29;
+  fill: var(--green);
 }
 
 .svg-icon.neutral>svg {
-  fill: #ffffff;
+  fill: var(--white);
 }
 
 .svg-icon.svg-icon-lg {
@@ -190,7 +202,7 @@ a.btn-link:hover {
 }
 
 .flat-btn:hover .svg-icon.svg-icon-filled>svg {
-  fill: #656256;
+  fill: var(--gray);
 }
 
 /* End of SVGs */
@@ -204,9 +216,9 @@ a.btn-link:hover {
   padding: 0 10px;
   display: flex;
   align-items: center;
-  background: #1976d2;
-  color: #ffffff;
-  box-shadow: 0 3px 10px #656256;
+  background: var(--blue);
+  color: var(--white);
+  box-shadow: 0 3px 10px var(--gray);
 }
 
 .actions-header h3 {
@@ -234,7 +246,7 @@ a.btn-link:hover {
 
 .radio-group label:hover:before,
 .checkbox-group label:hover:before {
-  background: #eeeeee;
+  background: var(--white-secondary);
 }
 
 input[type="radio"],
@@ -254,7 +266,7 @@ input[type="checkbox"]+label:before {
   top: 0;
   width: 1.4em;
   height: 1.4em;
-  border: 1px solid #656256;
+  border: 1px solid var(--gray);
   border-radius: 100%;
   background: #fafafa;
 }
@@ -268,8 +280,8 @@ input[type="checkbox"]+label:after {
   content: '';
   width: 1em;
   height: 1em;
-  border: 1px solid #656256;
-  background-color: #1976d2;
+  border: 1px solid var(--gray);
+  background-color: var(--blue);
   position: absolute;
   top: 0.2em;
   left: -1.8em;
@@ -305,7 +317,7 @@ input[type="checkbox"]:checked+label:after {
 }
 
 .input-group>label {
-  color: #656256;
+  color: var(--gray);
   margin-right: 1em;
 }
 
@@ -320,7 +332,7 @@ input[type="checkbox"]:checked+label:after {
 
 .input-group>input:focus {
   transition: border 0.2s ease-in-out;
-  border-bottom-color: #1976d2;
+  border-bottom-color: var(--blue);
 }
 
 /* End of Input */

@@ -14,7 +14,7 @@ footer {
   display: flex;
   justify-content: space-between;
   padding: .5em;
-  background-color: #1976d2;
-  color: #ffffff;
+  background-color: var(--blue);
+  color: var(--white);
   font-size: 12px;
 }
