@@ -11,7 +11,7 @@ export class GameCardComponent {
 
   model: SettingFileItem;
 
-  @Input() set modelSetter(value: SettingFileItem) {
+  @Input('model') set modelSetter(value: SettingFileItem) {
     if (!value) {
       return;
     }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ROUTES } from 'src/app/constants/routes.constant';
 import { GameSettingsComponent } from './game-settings.component';
 
 @Component({
@@ -12,13 +13,15 @@ export class LearnGameSettingsComponent extends GameSettingsComponent {
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
   ) {
     super();
   }
 
   startGame() {
-    this.router.navigate(['learn/game'],
+    this.router.navigate([ROUTES.LEARN.GAME],
       {
+        relativeTo: this.route,
         state: {
           settings: this.settings,
         },
