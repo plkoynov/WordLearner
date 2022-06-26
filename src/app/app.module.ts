@@ -15,6 +15,7 @@ import { LearnGameComponent } from './game/learn-game/learn-game.component';
 import { LetterBoxComponent } from './game/letter-box/letter-box.component';
 import { WriteGameEasyComponent } from './game/write-game-easy/write-game-easy.component';
 import { WriteGameHardComponent } from './game/write-game-hard/write-game-hard.component';
+import { MenuItemComponent } from './menu/menu-item/menu-item.component';
 import { MenuComponent } from './menu/menu.component';
 import { LocalStorageService } from './services/local-storage.service';
 import { RandomService } from './services/random.service';
@@ -25,6 +26,7 @@ import { SettingsComponent } from './settings/settings.component';
   declarations: [
     AppComponent,
     MenuComponent,
+    MenuItemComponent,
     GameCardComponent,
     GameHeaderComponent,
     GameResultComponent,

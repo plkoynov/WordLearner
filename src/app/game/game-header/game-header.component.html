@@ -1,18 +1,18 @@
 <a class="nav-btn"
-	 [routerLink]="['']">
+   [routerLink]="['']">
 	<app-svg-icon class="svg-icon svg-icon-sm"
-								iconName="icon-undo2"></app-svg-icon>
+				  iconName="icon-undo2"></app-svg-icon>
 	<span>Начало</span>
 </a>
 
 <h3>{{ game?.title }}</h3>
 
 <a *ngIf="game.hasSelectedFile"
-	 class="nav-btn"
-	 (click)="game.end()">
+   class="nav-btn"
+   (click)="game.end()">
 
 	<app-svg-icon class="svg-icon svg-icon-sm"
-								iconName="icon-clipboard"></app-svg-icon>
+				  iconName="icon-clipboard"></app-svg-icon>
 
 	<span>Резултат</span>
 </a>
