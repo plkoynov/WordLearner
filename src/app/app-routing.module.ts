@@ -9,6 +9,7 @@ import { MenuComponent } from './menu/menu.component';
 import { SettingsEditComponent } from './settings/settings-edit/settings-edit.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ROUTES } from './constants/routes.constant';
+import { GameResultComponent } from './game/game-result/game-result.component';
 
 
 const routes: Routes = [
@@ -66,6 +67,13 @@ const routes: Routes = [
         },
       },
     ],
+  },
+  {
+    path: ROUTES.RESULT,
+    component: GameResultComponent,
+    data: {
+      title: 'Резултат',
+    }
   },
   {
     path: ROUTES.SETTINGS.LIST,

@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Location } from '@angular/common';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SettingFileItem } from 'src/app/models/setting-file-item.model';
 
 @Component({
@@ -7,19 +9,28 @@ import { SettingFileItem } from 'src/app/models/setting-file-item.model';
   styleUrls: ['./game-result.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GameResultComponent {
+export class GameResultComponent implements OnInit {
   answers: { right: SettingFileItem[], wrong: SettingFileItem[] };
-
   result: number;
 
-  @Input() set answersSetter(value: { right: SettingFileItem[], wrong: SettingFileItem[] }) {
-    this.answers = value;
+  constructor(
+    private location: Location,
+    private router: Router
+  ) { }
 
-    const percentage = (this.answers.right.length / (this.answers.right.length + this.answers.wrong.length)) * 100;
-    if (isNaN(percentage) || !isFinite(percentage)) {
-      this.result = 0;
+  ngOnInit(): void {
+    const state = this.location.getState() as any;
+    if (state && state.answers) {
+      this.answers = state.answers;
+
+      const percentage = (this.answers.right.length / (this.answers.right.length + this.answers.wrong.length)) * 100;
+      if (isNaN(percentage) || !isFinite(percentage)) {
+        this.result = 0;
+      } else {
+        this.result = parseInt(percentage.toFixed(0), 10);
+      }
     } else {
-      this.result = parseInt(percentage.toFixed(0), 10);
+      this.router.navigate(['']);
     }
   }
 }

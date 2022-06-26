@@ -27,3 +27,8 @@
 .answers-row {
 	margin: 10px 0;
 }
+
+.answers-delimiter {
+	width: 3px;
+	background: var(--orange);
+}

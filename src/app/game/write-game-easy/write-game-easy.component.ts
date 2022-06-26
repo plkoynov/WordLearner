@@ -1,26 +1,33 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { ROUTES } from 'src/app/constants/routes.constant';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { RandomService } from 'src/app/services/random.service';
 import { LetterBox } from '../dtos/letter-box.dto';
 import { Word } from '../dtos/word.dto';
 import { WriteGameEasyDto } from '../dtos/write-game-easy.dto';
+import { GameBaseComponent } from '../game-base/game-base.component';
 
 @Component({
   selector: 'app-write-game-easy',
   templateUrl: './write-game-easy.component.html',
   styleUrls: ['./write-game-easy.component.css'],
 })
-export class WriteGameEasyComponent implements OnInit {
+export class WriteGameEasyComponent
+  extends GameBaseComponent
+  implements OnInit {
   game: WriteGameEasyDto;
 
   constructor(
     private location: Location,
     private localStorageService: LocalStorageService,
     private randomService: RandomService,
-    private router: Router,
-  ) { }
+    protected router: Router,
+  ) {
+    super(router);
+  }
 
   ngOnInit() {
     const state = this.location.getState() as any;
@@ -29,8 +36,10 @@ export class WriteGameEasyComponent implements OnInit {
       this.game = new WriteGameEasyDto(12, this.localStorageService, this.randomService);
       this.game.init(state.settings);
       this.game.initWords();
+
+      this.subscribeToGameOver(this.game);
     } else {
-      this.router.navigate(['write']);
+      this.router.navigate([ROUTES.WRITE.SETTINGS]);
     }
   }
 

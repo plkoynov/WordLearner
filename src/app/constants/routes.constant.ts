@@ -12,4 +12,5 @@ export const ROUTES = {
         LIST: 'settings',
         EDIT: 'edit',
     },
+    RESULT: 'result'
 }

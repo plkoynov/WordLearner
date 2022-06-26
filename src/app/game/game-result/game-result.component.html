@@ -1,4 +1,13 @@
-<h2>Резултат</h2>
+<div class="actions-header">
+	<a class="nav-btn"
+	   [routerLink]="['']">
+		<app-svg-icon class="svg-icon svg-icon-sm"
+					  iconName="icon-undo2"></app-svg-icon>
+		<span>Начало</span>
+	</a>
+
+	<h3>Резултат</h3>
+</div>
 
 <app-progress-bar [percentage]="result"></app-progress-bar>
 
@@ -12,7 +21,7 @@
 			{{ right.front }} / {{ right.back }}
 		</div>
 	</div>
-	<div style="width: 3px; background: #FF8811;"></div>
+	<div class="answers-delimiter"></div>
 	<div>
 		<div class="answers-column wrong-answers">
 			Грешни отговори
