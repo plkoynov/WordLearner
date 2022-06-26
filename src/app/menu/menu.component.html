@@ -8,18 +8,9 @@
 </div>
 
 <h2>Начало</h2>
-<label style="color: #656256">Изберете действие:</label>
+<label>Изберете действие:</label>
 
 <div class="menu-container">
-	<a *ngFor="let menuItem of menuItems"
-	   class="flat-btn flat-btn-animated space-between"
-	   [routerLink]="menuItem.routerLink">
-		<app-svg-icon class="svg-icon"
-					  [iconName]="menuItem.icon"></app-svg-icon>
-
-		<span>{{ menuItem.title }}</span>
-
-		<app-svg-icon class="svg-icon svg-icon-sm"
-					  iconName="icon-cheveron-right"></app-svg-icon>
-	</a>
+	<app-menu-item *ngFor="let menuItem of menuItems"
+				   [menuItem]="menuItem"></app-menu-item>
 </div>

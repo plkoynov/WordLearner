@@ -1,0 +1,10 @@
+:host {
+    flex: 0 1 calc(50% - 40px);
+    margin: 20px;
+}
+
+@media only screen and (max-width: 450px) {
+    :host {
+        flex-basis: 100%;
+    }
+}
